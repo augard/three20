@@ -45,7 +45,7 @@ void TTNetworkRequestStopped() {
 
   --gNetworkTaskCount;
   // If this asserts, you don't have enough stop requests to match your start requests.
-  TTDASSERT(gNetworkTaskCount >= 0);
+  // TTDASSERT(gNetworkTaskCount >= 0);
   gNetworkTaskCount = MAX(0, gNetworkTaskCount);
 
   if (gNetworkTaskCount == 0) {
