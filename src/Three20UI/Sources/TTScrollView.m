@@ -67,7 +67,7 @@ static const CGFloat kFrameDuration = 1.0/40.0;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame {
-  if (self = [super initWithFrame:frame]) {
+  if ((self = [super initWithFrame:frame])) {
     self.clipsToBounds = YES;
     self.multipleTouchEnabled = YES;
     self.userInteractionEnabled = YES;
@@ -1300,7 +1300,7 @@ static const CGFloat kFrameDuration = 1.0/40.0;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
-  [super touchesBegan:touches withEvent:event];
+    //[super touchesBegan:touches withEvent:event];
 
   [self ensureTouches];
 
@@ -1356,7 +1356,7 @@ static const CGFloat kFrameDuration = 1.0/40.0;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)touchesMoved:(NSSet*)touches withEvent:(UIEvent *)event {
-  [super touchesMoved:touches withEvent:event];
+    // [super touchesMoved:touches withEvent:event];
   TT_INVALIDATE_TIMER(_holdingTimer);
 
   if (_scrollEnabled && !_holding && _touchCount && !_animationTimer) {
@@ -1425,7 +1425,7 @@ static const CGFloat kFrameDuration = 1.0/40.0;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-  [super touchesCancelled:touches withEvent:event];
+    //[super touchesCancelled:touches withEvent:event];
   TT_INVALIDATE_TIMER(_holdingTimer);
 
   for (UITouch* touch in touches) {
@@ -1445,7 +1445,7 @@ static const CGFloat kFrameDuration = 1.0/40.0;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
-  [super touchesEnded:touches withEvent:event];
+    //[super touchesEnded:touches withEvent:event];
   TT_INVALIDATE_TIMER(_holdingTimer);
   if (_holding) {
     [self endHolding];

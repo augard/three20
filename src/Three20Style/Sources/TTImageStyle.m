@@ -43,7 +43,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNext:(TTStyle*)next {
-  if (self = [super initWithNext:next]) {
+  if ((self = [super initWithNext:next])) {
     _contentMode = UIViewContentModeScaleToFill;
     _size = CGSizeZero;
   }
@@ -164,7 +164,7 @@
     CGContextSaveGState(ctx);
     CGRect rect = [image convertRect:context.contentFrame withContentMode:_contentMode];
     [context.shape addToPath:rect];
-    CGContextClip(ctx);
+      //CGContextClip(ctx);
 
     [image drawInRect:context.contentFrame contentMode:_contentMode];
 

@@ -40,7 +40,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+  if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
     _flags.isViewInvalid = YES;
   }
 
@@ -50,7 +50,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
-  if (self = [self initWithNibName:nil bundle:nil]) {
+  if ((self = [self initWithNibName:nil bundle:nil])) {
   }
 
   return self;
@@ -374,7 +374,7 @@
   [_model.delegates removeObject:self];
   TT_RELEASE_SAFELY(_model);
   if (wasModelCreated) {
-    self.model;
+    [self model];
   }
 }
 
@@ -477,9 +477,9 @@
     _flags.isUpdatingView = YES;
 
     // Ensure the model is created
-    self.model;
+    [self model];
     // Ensure the view is created
-    self.view;
+    [self view];
 
     [self updateViewStates];
 

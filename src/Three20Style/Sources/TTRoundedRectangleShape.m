@@ -146,9 +146,10 @@
   CGFloat fw = rect.size.width;
   CGFloat fh = rect.size.height;
 
-  CGContextMoveToPoint(context, fw-RD(_bottomRightRadius), fh);
-  CGContextAddLineToPoint(context, RD(_bottomLeftRadius), fh);
-  CGContextAddArcToPoint(context, 0, fh, 0, fh-RD(_bottomLeftRadius), RD(_bottomLeftRadius));
+  CGContextMoveToPoint(context, 0, fh-RD(_bottomLeftRadius));
+  CGContextAddArcToPoint(context, 0, fh, RD(_bottomLeftRadius), fh, RD(_bottomLeftRadius));
+  CGContextAddArcToPoint(context, fw, fh, fw, fh-RD(_bottomRightRadius), RD(_bottomRightRadius));
+  CGContextAddLineToPoint(context, fw, fh-RD(_bottomRightRadius));
 }
 
 

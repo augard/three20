@@ -44,7 +44,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+  if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
     _navigationBarStyle = UIBarStyleDefault;
     _statusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
   }
@@ -55,7 +55,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
-  if (self = [self initWithNibName:nil bundle:nil]) {
+  if ((self = [self initWithNibName:nil bundle:nil])) {
   }
 
   return self;
@@ -92,13 +92,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)resizeForKeyboard:(NSNotification*)notification appearing:(BOOL)appearing {
 	CGRect keyboardBounds;
-	[[notification.userInfo objectForKey:UIKeyboardBoundsUserInfoKey] getValue:&keyboardBounds];
+	[[notification.userInfo objectForKey:@"UIKeyboardBoundsUserInfoKey"] getValue:&keyboardBounds];
 
 	CGPoint keyboardStart;
-	[[notification.userInfo objectForKey:UIKeyboardCenterBeginUserInfoKey] getValue:&keyboardStart];
+	[[notification.userInfo objectForKey:@"UIKeyboardCenterBeginUserInfoKey"] getValue:&keyboardStart];
 
 	CGPoint keyboardEnd;
-	[[notification.userInfo objectForKey:UIKeyboardCenterEndUserInfoKey] getValue:&keyboardEnd];
+	[[notification.userInfo objectForKey:@"UIKeyboardCenterEndUserInfoKey"] getValue:&keyboardEnd];
 
 	BOOL animated = keyboardStart.y != keyboardEnd.y;
   if (animated) {
@@ -287,7 +287,7 @@
   CGRect keyboardBounds = CGRectMake(0, 0, frameStart.size.width, frameStart.size.height);
 #else
   CGRect keyboardBounds;
-  [[notification.userInfo objectForKey:UIKeyboardBoundsUserInfoKey] getValue:&keyboardBounds];
+  [[notification.userInfo objectForKey:@"UIKeyboardBoundsUserInfoKey"] getValue:&keyboardBounds];
 #endif
 
   [self keyboardDidAppear:YES withBounds:keyboardBounds];
@@ -311,7 +311,7 @@
   CGRect keyboardBounds = CGRectMake(0, 0, frameEnd.size.width, frameEnd.size.height);
 #else
   CGRect keyboardBounds;
-  [[notification.userInfo objectForKey:UIKeyboardBoundsUserInfoKey] getValue:&keyboardBounds];
+  [[notification.userInfo objectForKey:@"UIKeyboardBoundsUserInfoKey"] getValue:&keyboardBounds];
 #endif
 
   [self keyboardWillDisappear:YES withBounds:keyboardBounds];

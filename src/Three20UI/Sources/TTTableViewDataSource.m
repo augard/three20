@@ -270,8 +270,8 @@
     } else if ([object isKindOfClass:[TTTableImageItem class]]) {
       return [TTTableImageItemCell class];
 
-    } else if ([object isKindOfClass:[TTTableStyledTextItem class]]) {
-      return [TTStyledTextTableItemCell class];
+        // } else if ([object isKindOfClass:[TTTableStyledTextItem class]]) {
+        //return [TTStyledTextTableItemCell class];
 
     } else if ([object isKindOfClass:[TTTableActivityItem class]]) {
       return [TTTableActivityItemCell class];
@@ -283,8 +283,8 @@
       return [TTTableTextItemCell class];
     }
 
-  } else if ([object isKindOfClass:[TTStyledText class]]) {
-    return [TTStyledTextTableCell class];
+      //} else if ([object isKindOfClass:[TTStyledText class]]) {
+      //return [TTStyledTextTableCell class];
 
   } else if ([object isKindOfClass:[UIControl class]]
              || [object isKindOfClass:[UITextView class]]

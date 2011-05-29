@@ -50,7 +50,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+  if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
     self.navigationBarTintColor = TTSTYLEVAR(navigationBarTintColor);
   }
 
@@ -60,7 +60,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
-  if (self = [self initWithNibName:nil bundle:nil]) {
+  if ((self = [self initWithNibName:nil bundle:nil])) {
   }
 
   return self;
@@ -140,7 +140,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setSearchViewController:(TTTableViewController*)searchViewController {
-  if (searchViewController) {
+  /*if (searchViewController) {
     if (nil == _searchController) {
       UISearchBar* searchBar = [[[UISearchBar alloc] init] autorelease];
       [searchBar sizeToFit];
@@ -155,14 +155,14 @@
   } else {
     _searchController.searchResultsViewController = nil;
     TT_RELEASE_SAFELY(_searchController);
-  }
+  }*/
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (void)doGarbageCollection {
-  [UIViewController doNavigatorGarbageCollection];
-  [UIViewController doCommonGarbageCollection];
+    //[UIViewController doNavigatorGarbageCollection];
+    //[UIViewController doCommonGarbageCollection];
 }
 
 
