@@ -167,10 +167,10 @@ static const NSInteger kLoadMaxRetries = 2;
     [_queue loader:self didFailLoadWithError:error];
 
   } else {
-    [self connection:nil didReceiveResponse:(NSHTTPURLResponse*)response];
-    [self connection:nil didReceiveData:data];
+    [(id)self connection:nil didReceiveResponse:(NSHTTPURLResponse*)response];
+    [(id)self connection:nil didReceiveData:data];
 
-    [self connectionDidFinishLoading:nil];
+    [(id)self connectionDidFinishLoading:nil];
   }
 }
 

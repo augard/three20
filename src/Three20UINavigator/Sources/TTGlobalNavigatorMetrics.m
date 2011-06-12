@@ -28,7 +28,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 UIInterfaceOrientation TTInterfaceOrientation() {
-    return [[UIDevice currentDevice] orientation];
+    return (int)[[UIDevice currentDevice] orientation];
 }
 
 
