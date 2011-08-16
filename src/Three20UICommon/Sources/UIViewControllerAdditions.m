@@ -304,6 +304,18 @@ TT_FIX_CATEGORY_BUG(UIViewControllerAdditions)
                                                        ? UIStatusBarAnimationFade
                                                        : UIStatusBarAnimationNone)];
 
+  BOOL statusBarHidden = [[[[NSBundle mainBundle] infoDictionary]
+                           objectForKey:@"UIStatusBarHidden"] boolValue];
+
+  if (!statusBarHidden) {
+    if ([[UIApplication sharedApplication]
+         respondsToSelector:@selector(setStatusBarHidden:withAnimation:)])
+      [[UIApplication sharedApplication] setStatusBarHidden:!show
+                                              withAnimation:(animated
+                                                             ? UIStatusBarAnimationFade
+                                                             :UIStatusBarAnimationNone)];
+  }
+
   if (animated) {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:TT_TRANSITION_DURATION];

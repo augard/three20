@@ -18,7 +18,6 @@
 
 // UI
 #import "Three20UI/TTTableControlItem.h"
-#import "Three20UI/TTTextEditor.h"
 #import "Three20UI/UIViewAdditions.h"
 #import "Three20Style/UIFontAdditions.h"
 
@@ -74,8 +73,7 @@ static const CGFloat kControlPadding = 8;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (BOOL)shouldSizeControlToFit:(UIView*)view {
-  return [view isKindOfClass:[UITextView class]]
-  || [view isKindOfClass:[TTTextEditor class]];
+  return [view isKindOfClass:[UITextView class]];
 }
 
 
@@ -108,11 +106,6 @@ static const CGFloat kControlPadding = 8;
     if ([view isKindOfClass:[UITextView class]]) {
       UITextView* textView = (UITextView*)view;
       CGFloat ttLineHeight = textView.font.ttLineHeight;
-      height = ttLineHeight * kDefaultTextViewLines;
-
-    } else if ([view isKindOfClass:[TTTextEditor class]]) {
-      TTTextEditor* textEditor = (TTTextEditor*)view;
-      CGFloat ttLineHeight = textEditor.font.ttLineHeight;
       height = ttLineHeight * kDefaultTextViewLines;
 
     } else if ([view isKindOfClass:[UITextField class]]) {
@@ -192,7 +185,13 @@ static const CGFloat kControlPadding = 8;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setObject:(id)object {
   if (object != _control && object != _item) {
-    [_control removeFromSuperview];
+    if (_control.superview == self.contentView) {
+      //on cell reuse it is possible that another
+      //cell is already the owner of _control, so
+      //check if we're its superview first
+      [_control removeFromSuperview];
+    }
+
     TT_RELEASE_SAFELY(_control);
     TT_RELEASE_SAFELY(_item);
 

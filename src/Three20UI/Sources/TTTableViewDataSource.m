@@ -16,8 +16,6 @@
 
 #import "Three20UI/TTTableViewDataSource.h"
 
-// UI
-#import "Three20UI/TTTextEditor.h"
 
 // - Table Items
 #import "Three20UI/TTTableItem.h"
@@ -287,8 +285,7 @@
       //return [TTStyledTextTableCell class];
 
   } else if ([object isKindOfClass:[UIControl class]]
-             || [object isKindOfClass:[UITextView class]]
-             || [object isKindOfClass:[TTTextEditor class]]) {
+             || [object isKindOfClass:[UITextView class]]) {
     return [TTTableControlCell class];
 
   } else if ([object isKindOfClass:[UIView class]]) {

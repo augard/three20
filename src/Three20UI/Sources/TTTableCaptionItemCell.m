@@ -50,6 +50,7 @@ static const CGFloat kKeyWidth = 75;
     self.detailTextLabel.font = TTSTYLEVAR(tableSmallFont);
     self.detailTextLabel.textColor = TTSTYLEVAR(textColor);
     self.detailTextLabel.highlightedTextColor = TTSTYLEVAR(highlightedTextColor);
+	self.detailTextLabel.backgroundColor = TTSTYLEVAR(backgroundTextColor);
     self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     self.detailTextLabel.minimumFontSize = 8;
     self.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;

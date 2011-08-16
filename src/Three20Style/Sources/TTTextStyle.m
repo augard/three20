@@ -22,6 +22,7 @@
 #import "Three20Style/UIFontAdditions.h"
 
 // Core
+#import "Three20Core/NSStringAdditions.h"
 #import "Three20Core/TTCorePreprocessorMacros.h"
 
 
