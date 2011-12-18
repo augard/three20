@@ -55,7 +55,7 @@ static const NSInteger kLoadMaxRetries = 2;
   if ((self = [super init])) {
     _urlPath            = [request.urlPath copy];
     _queue              = queue;
-    _cacheKey           = [request.cacheKey retain];
+    _cacheKey           = request.cacheKey;
     _cachePolicy        = request.cachePolicy;
     _cacheExpirationAge = request.cacheExpirationAge;
     _requests           = [[NSMutableArray alloc] init];
@@ -76,7 +76,6 @@ static const NSInteger kLoadMaxRetries = 2;
   TT_RELEASE_SAFELY(_urlPath);
   TT_RELEASE_SAFELY(_cacheKey);
   TT_RELEASE_SAFELY(_requests);
-  [super dealloc];
 }
 
 
@@ -99,9 +98,9 @@ static const NSInteger kLoadMaxRetries = 2;
     // Strictly speaking, to be really conformant need to interpret %xx hex encoded entities.
     // The [NSString dataUsingEncoding] doesn't do that correctly, but most documents don't use that.
     // Skip for now.
-	_responseData = (id)[[[dataSplit objectAtIndex:1] dataUsingEncoding:NSASCIIStringEncoding] retain];
+	_responseData = (id)[[dataSplit objectAtIndex:1] dataUsingEncoding:NSASCIIStringEncoding];
   } else {
-    _responseData = (id)[[NSData dataWithBase64EncodedString:[dataSplit objectAtIndex:1]] retain];
+    _responseData = (id)[NSData dataWithBase64EncodedString:[dataSplit objectAtIndex:1]];
   }
 
   [_queue performSelector:@selector(loader:didLoadResponse:data:) withObject:self
@@ -127,7 +126,7 @@ static const NSInteger kLoadMaxRetries = 2;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dispatchLoadedBytes:(NSInteger)bytesLoaded expected:(NSInteger)bytesExpected {
-  for (TTURLRequest* request in [[_requests copy] autorelease]) {
+  for (TTURLRequest* request in [_requests copy]) {
     request.totalBytesLoaded = bytesLoaded;
     request.totalBytesExpected = bytesExpected;
 
@@ -267,7 +266,7 @@ static const NSInteger kLoadMaxRetries = 2;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dispatchError:(NSError*)error {
-  for (TTURLRequest* request in [[_requests copy] autorelease]) {
+  for (TTURLRequest* request in [_requests copy]) {
     request.isLoading = NO;
 
     for (id<TTURLRequestDelegate> delegate in request.delegates) {
@@ -281,7 +280,7 @@ static const NSInteger kLoadMaxRetries = 2;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dispatchLoaded:(NSDate*)timestamp {
-  for (TTURLRequest* request in [[_requests copy] autorelease]) {
+  for (TTURLRequest* request in [_requests copy]) {
     request.timestamp = timestamp;
     request.isLoading = NO;
 
@@ -296,7 +295,7 @@ static const NSInteger kLoadMaxRetries = 2;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dispatchAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge {
-  for (TTURLRequest* request in [[_requests copy] autorelease]) {
+  for (TTURLRequest* request in [_requests copy]) {
 
     for (id<TTURLRequestDelegate> delegate in request.delegates) {
       if ([delegate respondsToSelector:@selector(request:didReceiveAuthenticationChallenge:)]) {
@@ -313,7 +312,6 @@ static const NSInteger kLoadMaxRetries = 2;
   for (id request in requestsToCancel) {
     [self cancel:request];
   }
-  [requestsToCancel release];
 }
 
 
@@ -325,7 +323,7 @@ static const NSInteger kLoadMaxRetries = 2;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSHTTPURLResponse*)response {
-  _response = [response retain];
+  _response = response;
   NSDictionary* headers = [response allHeaderFields];
   int contentLength = [[headers objectForKey:@"Content-Length"] intValue];
 
@@ -344,7 +342,7 @@ static const NSInteger kLoadMaxRetries = 2;
 
   _responseData = [[NSMutableData alloc] initWithCapacity:contentLength];
 
-    for (TTURLRequest* request in [[_requests copy] autorelease]) {
+    for (TTURLRequest* request in [_requests copy]) {
         request.totalContentLength = contentLength;
     }
 
@@ -354,7 +352,7 @@ static const NSInteger kLoadMaxRetries = 2;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data {
   [_responseData appendData:data];
-    for (TTURLRequest* request in [[_requests copy] autorelease]) {
+    for (TTURLRequest* request in [_requests copy]) {
         request.totalBytesDownloaded += [data length];
     }
 }

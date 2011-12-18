@@ -32,19 +32,19 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)topic:(NSString*)topic strongRef:(id)strongRef weakRef:(id)weakRef {
-  return [[[TTUserInfo alloc] initWithTopic:topic strongRef:strongRef weakRef:weakRef] autorelease];
+  return [[TTUserInfo alloc] initWithTopic:topic strongRef:strongRef weakRef:weakRef];
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)topic:(NSString*)topic {
-  return [[[TTUserInfo alloc] initWithTopic:topic strongRef:nil weakRef:nil] autorelease];
+  return [[TTUserInfo alloc] initWithTopic:topic strongRef:nil weakRef:nil];
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)weakRef:(id)weakRef {
-  return [[[TTUserInfo alloc] initWithTopic:nil strongRef:nil weakRef:weakRef] autorelease];
+  return [[TTUserInfo alloc] initWithTopic:nil strongRef:nil weakRef:weakRef];
 }
 
 
@@ -63,7 +63,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_topic);
   TT_RELEASE_SAFELY(_strongRef);
-  [super dealloc];
 }
 
 

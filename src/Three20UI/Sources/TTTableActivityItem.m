@@ -31,8 +31,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   TT_RELEASE_SAFELY(_text);
-
-  [super dealloc];
 }
 
 
@@ -44,7 +42,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text {
-  TTTableActivityItem* item = [[[self alloc] init] autorelease];
+  TTTableActivityItem* item = [[self alloc] init];
   item.text = text;
   return item;
 }

@@ -87,7 +87,6 @@
   TT_RELEASE_SAFELY(_linkStyle);
   TT_RELEASE_SAFELY(_invalidImages);
 
-  [super dealloc];
 }
 
 
@@ -131,7 +130,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (UIFont*)boldFont {
   if (!_boldFont) {
-    _boldFont = [[self boldVersionOfFont:self.font] retain];
+    _boldFont = [self boldVersionOfFont:self.font];
   }
   return _boldFont;
 }
@@ -140,7 +139,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (UIFont*)italicFont {
   if (!_italicFont) {
-    _italicFont = [[self italicVersionOfFont:self.font] retain];
+    _italicFont = [self italicVersionOfFont:self.font];
   }
   return _italicFont;
 }
@@ -149,7 +148,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (TTStyle*)linkStyle {
   if (!_linkStyle) {
-    _linkStyle = [TTSTYLE(linkText:) retain];
+    _linkStyle = TTSTYLE(linkText:);
   }
   return _linkStyle;
 }
@@ -224,7 +223,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)addFrame:(TTStyledFrame*)frame {
   if (!_rootFrame) {
-    _rootFrame = [frame retain];
+    _rootFrame = frame;
 
   } else if (_topFrame) {
     if (!_topFrame.firstChildFrame) {
@@ -284,7 +283,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (TTStyledInlineFrame*)addInlineFrame:(TTStyle*)style element:(TTStyledElement*)element
                         width:(CGFloat)width height:(CGFloat)height {
-  TTStyledInlineFrame* frame = [[[TTStyledInlineFrame alloc] initWithElement:element] autorelease];
+  TTStyledInlineFrame* frame = [[TTStyledInlineFrame alloc] initWithElement:element];
   frame.style = style;
   frame.bounds = CGRectMake(_x, _height, width, height);
   [self pushFrame:frame];
@@ -313,7 +312,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (TTStyledFrame*)addBlockFrame:(TTStyle*)style element:(TTStyledElement*)element
                   width:(CGFloat)width height:(CGFloat)height {
-  TTStyledBoxFrame* frame = [[[TTStyledBoxFrame alloc] initWithElement:element] autorelease];
+  TTStyledBoxFrame* frame = [[TTStyledBoxFrame alloc] initWithElement:element];
   frame.style = style;
   frame.bounds = CGRectMake(_x, _height, width, height);
   [self pushFrame:frame];
@@ -414,8 +413,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (TTStyledFrame*)addFrameForText:(NSString*)text element:(TTStyledElement*)element
                   node:(TTStyledTextNode*)node width:(CGFloat)width height:(CGFloat)height {
-  TTStyledTextFrame* frame = [[[TTStyledTextFrame alloc] initWithText:text element:element
-                                                         node:node] autorelease];
+  TTStyledTextFrame* frame = [[TTStyledTextFrame alloc] initWithText:text element:element
+                                                         node:node];
   frame.font = _font;
   [self addContentFrame:frame width:width height:height];
   return frame;
@@ -470,13 +469,13 @@
 
     if (elt.firstChild) {
       TTStyledNode* child = elt.firstChild;
-      TTStyledLayout* layout = [[[TTStyledLayout alloc] initWithX:_minX
-                                                        width:0 height:_height] autorelease];
+      TTStyledLayout* layout = [[TTStyledLayout alloc] initWithX:_minX
+                                                        width:0 height:_height];
       layout.font = _font;
       layout.invalidImages = _invalidImages;
       [layout layout:child];
       if (!_invalidImages && layout.invalidImages) {
-        _invalidImages = [layout.invalidImages retain];
+        _invalidImages = layout.invalidImages;
       }
 
       TTStyledFrame* frame = [self addContentFrame:layout.rootFrame width:layout.width];
@@ -643,8 +642,8 @@
     }
   }
 
-  TTStyledImageFrame* frame = [[[TTStyledImageFrame alloc] initWithElement:element
-                                                           node:imageNode] autorelease];
+  TTStyledImageFrame* frame = [[TTStyledImageFrame alloc] initWithElement:element
+                                                           node:imageNode];
   frame.style = style;
 
   if (!padding || !padding.position) {
@@ -841,8 +840,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setFont:(UIFont*)font {
   if (font != _font) {
-    [_font release];
-    _font = [font retain];
+    _font = font;
     TT_RELEASE_SAFELY(_boldFont);
     TT_RELEASE_SAFELY(_italicFont);
   }

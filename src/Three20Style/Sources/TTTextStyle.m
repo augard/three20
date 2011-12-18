@@ -62,7 +62,6 @@
   TT_RELEASE_SAFELY(_color);
   TT_RELEASE_SAFELY(_shadowColor);
 
-  [super dealloc];
 }
 
 
@@ -74,7 +73,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTTextStyle*)styleWithFont:(UIFont*)font next:(TTStyle*)next {
-  TTTextStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTTextStyle* style = [[self alloc] initWithNext:next];
   style.font = font;
   return style;
 }
@@ -82,7 +81,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTTextStyle*)styleWithColor:(UIColor*)color next:(TTStyle*)next {
-  TTTextStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTTextStyle* style = [[self alloc] initWithNext:next];
   style.color = color;
   return style;
 }
@@ -90,7 +89,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTTextStyle*)styleWithFont:(UIFont*)font color:(UIColor*)color next:(TTStyle*)next {
-  TTTextStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTTextStyle* style = [[self alloc] initWithNext:next];
   style.font = font;
   style.color = color;
   return style;
@@ -100,7 +99,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTTextStyle*)styleWithFont:(UIFont*)font color:(UIColor*)color
                 textAlignment:(UITextAlignment)textAlignment next:(TTStyle*)next {
-  TTTextStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTTextStyle* style = [[self alloc] initWithNext:next];
   style.font = font;
   style.color = color;
   style.textAlignment = textAlignment;
@@ -112,7 +111,7 @@
 + (TTTextStyle*)styleWithFont:(UIFont*)font color:(UIColor*)color
                   shadowColor:(UIColor*)shadowColor shadowOffset:(CGSize)shadowOffset
                          next:(TTStyle*)next {
-  TTTextStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTTextStyle* style = [[self alloc] initWithNext:next];
   style.font = font;
   style.color = color;
   style.shadowColor = shadowColor;
@@ -126,7 +125,7 @@
               minimumFontSize:(CGFloat)minimumFontSize
                   shadowColor:(UIColor*)shadowColor shadowOffset:(CGSize)shadowOffset
                          next:(TTStyle*)next {
-  TTTextStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTTextStyle* style = [[self alloc] initWithNext:next];
   style.font = font;
   style.color = color;
   style.minimumFontSize = minimumFontSize;
@@ -144,7 +143,7 @@
             verticalAlignment:(UIControlContentVerticalAlignment)verticalAlignment
                 lineBreakMode:(UILineBreakMode)lineBreakMode numberOfLines:(NSInteger)numberOfLines
                          next:(TTStyle*)next {
-  TTTextStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTTextStyle* style = [[self alloc] initWithNext:next];
   style.font = font;
   style.color = color;
   style.minimumFontSize = minimumFontSize;

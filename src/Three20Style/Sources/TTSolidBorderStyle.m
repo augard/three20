@@ -47,7 +47,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_color);
 
-  [super dealloc];
 }
 
 
@@ -59,7 +58,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTSolidBorderStyle*)styleWithColor:(UIColor*)color width:(CGFloat)width next:(TTStyle*)next {
-  TTSolidBorderStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTSolidBorderStyle* style = [[self alloc] initWithNext:next];
   style.color = color;
   style.width = width;
   return style;

@@ -53,8 +53,7 @@ TT_FIX_CATEGORY_BUG(TTImageViewInternal)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setImage:(UIImage*)image {
   if (image != _image) {
-    [_image release];
-    _image = [image retain];
+    _image = image;
 
     [self updateLayer];
 

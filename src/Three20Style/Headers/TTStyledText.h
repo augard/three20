@@ -34,10 +34,10 @@
   NSMutableArray* _invalidImages;
   NSMutableArray* _imageRequests;
 
-  id<TTStyledTextDelegate> _delegate;
+  id<TTStyledTextDelegate> __unsafe_unretained _delegate;
 }
 
-@property (nonatomic, assign) id<TTStyledTextDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id<TTStyledTextDelegate> delegate;
 
 /**
  * The first in the sequence of nodes that contain the styled text.

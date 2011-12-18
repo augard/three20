@@ -43,7 +43,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTBlendStyle*)styleWithBlend:(CGBlendMode)blendMode next:(TTStyle*)next {
-  TTBlendStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTBlendStyle* style = [[self alloc] initWithNext:next];
   style.blendMode = blendMode;
   return style;
 }

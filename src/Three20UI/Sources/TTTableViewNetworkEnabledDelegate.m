@@ -73,7 +73,7 @@ static const CGFloat kInfiniteScrollThreshold = 0.5;
     _infiniteScrollEnabled = enableInfiniteScroll;
 
     // Hook up to the model to listen for changes.
-    _model = [controller.model retain];
+    _model = controller.model;
     [_model.delegates addObject:self];
 
     if (_dragRefreshEnabled) {
@@ -121,8 +121,6 @@ static const CGFloat kInfiniteScrollThreshold = 0.5;
   TT_RELEASE_SAFELY(_headerView);
   TT_RELEASE_SAFELY(_footerView);
   TT_RELEASE_SAFELY(_model);
-
-  [super dealloc];
 }
 
 

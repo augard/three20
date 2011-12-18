@@ -67,7 +67,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNode:(TTStyledNode*)rootNode {
   if ((self = [super init])) {
-    _rootNode = [rootNode retain];
+    _rootNode = rootNode;
   }
 
   return self;
@@ -83,7 +83,6 @@
   TT_RELEASE_SAFELY(_invalidImages);
   TT_RELEASE_SAFELY(_imageRequests);
 
-  [super dealloc];
 }
 
 
@@ -107,12 +106,12 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTStyledText*)textFromXHTML:(NSString*)source lineBreaks:(BOOL)lineBreaks URLs:(BOOL)URLs {
-  TTStyledTextParser* parser = [[[TTStyledTextParser alloc] init] autorelease];
+  TTStyledTextParser* parser = [[TTStyledTextParser alloc] init];
   parser.parseLineBreaks = lineBreaks;
   parser.parseURLs = URLs;
   [parser parseXHTML:source];
   if (parser.rootNode) {
-    return [[[TTStyledText alloc] initWithNode:parser.rootNode] autorelease];
+    return [[TTStyledText alloc] initWithNode:parser.rootNode];
 
   } else {
     return nil;
@@ -128,12 +127,12 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTStyledText*)textWithURLs:(NSString*)source lineBreaks:(BOOL)lineBreaks {
-  TTStyledTextParser* parser = [[[TTStyledTextParser alloc] init] autorelease];
+  TTStyledTextParser* parser = [[TTStyledTextParser alloc] init];
   parser.parseLineBreaks = lineBreaks;
   parser.parseURLs = YES;
   [parser parseText:source];
   if (parser.rootNode) {
-    return [[[TTStyledText alloc] initWithNode:parser.rootNode] autorelease];
+    return [[TTStyledText alloc] initWithNode:parser.rootNode];
 
   } else {
     return nil;
@@ -150,7 +149,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)stopLoadingImages {
   if (_imageRequests) {
-    NSMutableArray* requests = [_imageRequests retain];
+    NSMutableArray* requests = _imageRequests;
     TT_RELEASE_SAFELY(_imageRequests);
 
     if (!_invalidImages) {
@@ -161,7 +160,6 @@
       [_invalidImages addObject:request.userInfo];
       [request cancel];
     }
-    [requests release];
   }
 }
 
@@ -182,7 +180,7 @@
         } else {
           TTURLRequest* request = [TTURLRequest requestWithURL:imageNode.URL delegate:self];
           request.userInfo = imageNode;
-          request.response = [[[TTURLImageResponse alloc] init] autorelease];
+          request.response = [[TTURLImageResponse alloc] init];
           [request send];
         }
       }
@@ -294,8 +292,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setFont:(UIFont*)font {
   if (font != _font) {
-    [_font release];
-    _font = [font retain];
+    _font = font;
     [self setNeedsLayout];
   }
 }
@@ -339,12 +336,9 @@
   layout.textAlignment = _textAlignment;
   [layout layout:_rootNode];
 
-  [_rootFrame release];
-  _rootFrame = [layout.rootFrame retain];
+  _rootFrame = layout.rootFrame;
   _height = ceil(layout.height);
-  [_invalidImages release];
-  _invalidImages = [layout.invalidImages retain];
-  [layout release];
+  _invalidImages = layout.invalidImages;
 
   [self loadImages];
 }
@@ -418,7 +412,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)addText:(NSString*)text {
-  [self addChild:[[[TTStyledTextNode alloc] initWithText:text] autorelease]];
+  [self addChild:[[TTStyledTextNode alloc] initWithText:text]];
 }
 
 

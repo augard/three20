@@ -171,7 +171,6 @@ static CGFloat kProgressMargin  = 6;
   TT_RELEASE_SAFELY(_progressView);
   TT_RELEASE_SAFELY(_activityIndicator);
   TT_RELEASE_SAFELY(_label);
-  [super dealloc];
 }
 
 

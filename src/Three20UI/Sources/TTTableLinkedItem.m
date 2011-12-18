@@ -37,8 +37,6 @@
   TT_RELEASE_SAFELY(_accessoryURL);
   _delegate = nil;
   _selector = nil;
-
-  [super dealloc];
 }
 
 

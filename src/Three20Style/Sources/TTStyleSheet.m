@@ -53,7 +53,6 @@ static TTStyleSheet* gStyleSheet = nil;
            object: nil];
   TT_RELEASE_SAFELY(_styles);
 
-  [super dealloc];
 }
 
 
@@ -74,8 +73,7 @@ static TTStyleSheet* gStyleSheet = nil;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (void)setGlobalStyleSheet:(TTStyleSheet*)styleSheet {
-  [gStyleSheet release];
-  gStyleSheet = [styleSheet retain];
+  gStyleSheet = styleSheet;
 }
 
 
@@ -108,11 +106,17 @@ static TTStyleSheet* gStyleSheet = nil;
   NSString* key = state == UIControlStateNormal
     ? selector
     : [NSString stringWithFormat:@"%@%d", selector, state];
-  TTStyle* style = [_styles objectForKey:key];
+  TTStyle __unsafe_unretained *style = [_styles objectForKey:key];
   if (!style) {
     SEL sel = NSSelectorFromString(selector);
     if ([self respondsToSelector:sel]) {
-      style = [self performSelector:sel withObject:(id)state];
+        style = [self performSelector:NSSelectorFromString(selector) withObject:nil];
+        //NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:sel]];
+        //[invocation setTarget:self];
+        //[invocation setSelector:sel];
+        //[invocation setArgument:&state atIndex:1];
+        //[invocation invoke];
+        //[invocation getReturnValue:&style];
       if (style) {
         if (!_styles) {
           _styles = [[NSMutableDictionary alloc] init];

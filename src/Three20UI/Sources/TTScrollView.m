@@ -116,8 +116,6 @@ static const CGFloat kFrameDuration = 1.0/40.0;
 
   TT_RELEASE_SAFELY(_touch1);
   TT_RELEASE_SAFELY(_touch2);
-
-  [super dealloc];
 }
 
 
@@ -946,12 +944,12 @@ static const CGFloat kFrameDuration = 1.0/40.0;
 - (void)acquireTouch:(UITouch*)touch {
   if (nil == _touch1) {
     TT_RELEASE_SAFELY(_touch1);
-    _touch1 = [touch retain];
+    _touch1 = touch;
     ++_touchCount;
 
   } else if (nil == _touch2) {
     TT_RELEASE_SAFELY(_touch2);
-    _touch2 = [touch retain];
+    _touch2 = touch;
     ++_touchCount;
   }
 }
@@ -1089,7 +1087,7 @@ static const CGFloat kFrameDuration = 1.0/40.0;
 
     _animateEdges = edges;
     _animationDuration = duration;
-    _animationStartTime = [[NSDate date] retain];
+    _animationStartTime = [NSDate date];
     _animationTimer = [NSTimer scheduledTimerWithTimeInterval:kFrameDuration target:self
       selector:@selector(animator) userInfo:nil repeats:YES];
   }
@@ -1746,7 +1744,7 @@ static const CGFloat kFrameDuration = 1.0/40.0;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (UIView*)dequeueReusablePage {
   if (_pageQueue.count) {
-    UIView* page = [[_pageQueue.lastObject retain] autorelease];
+    UIView* page = _pageQueue.lastObject;
     [_pageQueue removeLastObject];
     return page;
 

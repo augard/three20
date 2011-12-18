@@ -35,8 +35,6 @@
   TT_RELEASE_SAFELY(_imageURL);
   TT_RELEASE_SAFELY(_defaultImage);
   TT_RELEASE_SAFELY(_imageStyle);
-
-  [super dealloc];
 }
 
 
@@ -48,7 +46,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text imageURL:(NSString*)imageURL {
-  TTTableImageItem* item = [[[self alloc] init] autorelease];
+  TTTableImageItem* item = [[self alloc] init];
   item.text = text;
   item.imageURL = imageURL;
   return item;
@@ -57,7 +55,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text imageURL:(NSString*)imageURL URL:(NSString*)URL {
-  TTTableImageItem* item = [[[self alloc] init] autorelease];
+  TTTableImageItem* item = [[self alloc] init];
   item.text = text;
   item.imageURL = imageURL;
   item.URL = URL;
@@ -68,7 +66,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text imageURL:(NSString*)imageURL defaultImage:(UIImage*)defaultImage
                URL:(NSString*)URL {
-  TTTableImageItem* item = [[[self alloc] init] autorelease];
+  TTTableImageItem* item = [[self alloc] init];
   item.text = text;
   item.imageURL = imageURL;
   item.defaultImage = defaultImage;
@@ -80,7 +78,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text imageURL:(NSString*)imageURL defaultImage:(UIImage*)defaultImage
         imageStyle:(TTStyle*)imageStyle URL:(NSString*)URL {
-  TTTableImageItem* item = [[[self alloc] init] autorelease];
+  TTTableImageItem* item = [[self alloc] init];
   item.text = text;
   item.imageURL = imageURL;
   item.defaultImage = defaultImage;

@@ -37,7 +37,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_image);
 
-  [super dealloc];
 }
 
 
@@ -55,7 +54,7 @@
   TTDASSERT(nil == _image);
 
   if ([data isKindOfClass:[UIImage class]]) {
-    _image = [data retain];
+    _image = data;
 
   } else if ([data isKindOfClass:[NSData class]]) {
     // TODO(jverkoey Feb 10, 2010): This logic doesn't entirely make sense. Why don't we just store
@@ -80,7 +79,7 @@
         [[TTURLCache sharedCache] storeImage:image forURL:request.urlPath];
       }
 
-      _image = [image retain];
+      _image = image;
 
     } else {
       return [NSError errorWithDomain:kTTNetworkErrorDomain

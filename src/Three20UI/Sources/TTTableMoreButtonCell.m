@@ -55,8 +55,6 @@ static const CGFloat kMoreButtonMargin = 40;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   TT_RELEASE_SAFELY(_activityIndicatorView);
-
-  [super dealloc];
 }
 
 

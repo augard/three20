@@ -64,7 +64,7 @@ static NSMutableDictionary* gNamedCaches = nil;
 - (id)initWithName:(NSString*)name {
   if ((self = [super init])) {
     _name             = [name copy];
-    _cachePath        = [[TTURLCache cachePathWithName:name] retain];
+    _cachePath        = [TTURLCache cachePathWithName:name];
     _invalidationAge  = TT_DEFAULT_CACHE_INVALIDATION_AGE;
 
     // XXXjoe Disabling the built-in cache may save memory but it also makes UIWebView slow
@@ -104,7 +104,6 @@ static NSMutableDictionary* gNamedCaches = nil;
   TT_RELEASE_SAFELY(_imageSortedList);
   TT_RELEASE_SAFELY(_cachePath);
 
-  [super dealloc];
 }
 
 
@@ -121,7 +120,7 @@ static NSMutableDictionary* gNamedCaches = nil;
   }
   TTURLCache* cache = [gNamedCaches objectForKey:name];
   if (nil == cache) {
-    cache = [[[TTURLCache alloc] initWithName:name] autorelease];
+    cache = [[TTURLCache alloc] initWithName:name];
     [gNamedCaches setObject:cache forKey:name];
   }
   return cache;
@@ -140,8 +139,7 @@ static NSMutableDictionary* gNamedCaches = nil;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (void)setSharedCache:(TTURLCache*)cache {
   if (gSharedCache != cache) {
-    [gSharedCache release];
-    gSharedCache = [cache retain];
+    gSharedCache = cache;
   }
 }
 
@@ -270,7 +268,7 @@ static NSMutableDictionary* gNamedCaches = nil;
 - (NSString*)loadEtagFromCacheWithKey:(NSString*)key {
   NSString* path = [self etagCachePathForKey:key];
   NSData* data = [NSData dataWithContentsOfFile:path];
-  return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+  return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
 

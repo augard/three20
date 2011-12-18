@@ -39,7 +39,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTRoundedRectangleShape*)shapeWithRadius:(CGFloat)radius {
-  TTRoundedRectangleShape* shape = [[[TTRoundedRectangleShape alloc] init] autorelease];
+  TTRoundedRectangleShape* shape = [[TTRoundedRectangleShape alloc] init];
   shape.topLeftRadius = shape.topRightRadius = shape.bottomRightRadius = shape.bottomLeftRadius
   = radius;
   return shape;
@@ -49,7 +49,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTRoundedRectangleShape*)shapeWithTopLeft:(CGFloat)topLeft topRight:(CGFloat)topRight
                                  bottomRight:(CGFloat)bottomRight bottomLeft:(CGFloat)bottomLeft {
-  TTRoundedRectangleShape* shape = [[[TTRoundedRectangleShape alloc] init] autorelease];
+  TTRoundedRectangleShape* shape = [[TTRoundedRectangleShape alloc] init];
   shape.topLeftRadius = topLeft;
   shape.topRightRadius = topRight;
   shape.bottomRightRadius = bottomRight;

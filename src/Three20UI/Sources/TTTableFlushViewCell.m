@@ -49,8 +49,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_item);
   TT_RELEASE_SAFELY(_view);
-
-  [super dealloc];
 }
 
 
@@ -99,11 +97,11 @@
     TT_RELEASE_SAFELY(_item);
 
     if ([object isKindOfClass:[UIView class]]) {
-      _view = [object retain];
+      _view = object;
 
     } else if ([object isKindOfClass:[TTTableViewItem class]]) {
-      _item = [object retain];
-      _view = [_item.view retain];
+      _item = object;
+      _view = _item.view;
     }
 
     [self.contentView addSubview:_view];

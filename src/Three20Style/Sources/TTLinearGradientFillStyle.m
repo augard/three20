@@ -41,7 +41,6 @@
   TT_RELEASE_SAFELY(_color1);
   TT_RELEASE_SAFELY(_color2);
 
-  [super dealloc];
 }
 
 
@@ -54,7 +53,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTLinearGradientFillStyle*)styleWithColor1:(UIColor*)color1 color2:(UIColor*)color2
                                          next:(TTStyle*)next {
-  TTLinearGradientFillStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTLinearGradientFillStyle* style = [[self alloc] initWithNext:next];
   style.color1 = color1;
   style.color2 = color2;
   return style;
@@ -76,8 +75,7 @@
   [context.shape addToPath:rect];
   CGContextClip(ctx);
 
-  UIColor* colors[] = {_color1, _color2};
-  CGGradientRef gradient = [self newGradientWithColors:colors count:2];
+  CGGradientRef gradient = [self newGradientWithColors:[NSArray arrayWithObjects:_color1, _color2, nil] count:2];
   CGContextDrawLinearGradient(ctx, gradient, CGPointMake(rect.origin.x, rect.origin.y),
                               CGPointMake(rect.origin.x, rect.origin.y+rect.size.height),
                               kCGGradientDrawsAfterEndLocation);

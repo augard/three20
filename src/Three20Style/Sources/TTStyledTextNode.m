@@ -51,7 +51,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_text);
 
-  [super dealloc];
 }
 
 

@@ -151,7 +151,7 @@ TT_FIX_CATEGORY_BUG(UIColorAdditions)
   CGFloat g = rgba[1];
   CGFloat b = rgba[2];
 
-  return [[UIColor colorWithRed:r green:g blue:b alpha:newAlpha] retain];
+  return [UIColor colorWithRed:r green:g blue:b alpha:newAlpha];
 }
 
 

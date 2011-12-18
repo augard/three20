@@ -17,6 +17,7 @@
 #import "Three20UI/private/TTButtonContent.h"
 
 // UI
+#import "Three20UI/TTButton.h"
 #import "Three20UI/TTImageViewDelegate.h"
 
 // Network
@@ -58,8 +59,6 @@
   TT_RELEASE_SAFELY(_image);
   TT_RELEASE_SAFELY(_style);
   self.delegate = nil;
-
-  [super dealloc];
 }
 
 
@@ -71,8 +70,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidStartLoad:(TTURLRequest*)request {
-  [_request release];
-  _request = [request retain];
+  _request = request;
 
   if ([_delegate respondsToSelector:@selector(imageViewDidStartLoad:)]) {
     [_delegate imageViewDidStartLoad:nil];
@@ -122,8 +120,7 @@
     return;
 
   [self stopLoading];
-  [_imageURL release];
-  _imageURL = [URL retain];
+  _imageURL = URL;
 
   if (_imageURL.length) {
     [self reload];
@@ -149,7 +146,7 @@
 
     } else {
       TTURLRequest* request = [TTURLRequest requestWithURL:_imageURL delegate:self];
-      request.response = [[[TTURLImageResponse alloc] init] autorelease];
+      request.response = [[TTURLImageResponse alloc] init];
       [request send];
     }
   }

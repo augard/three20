@@ -70,8 +70,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   [[TTURLRequestQueue mainQueue] cancelRequestsWithDelegate:self];
-
-  [super dealloc];
 }
 
 
@@ -88,7 +86,7 @@
 
   } else {
     CGRect frame = self.wantsFullScreenLayout ? TTScreenBounds() : TTNavigationFrame();
-    self.view = [[[UIView alloc] initWithFrame:frame] autorelease];
+    self.view = [[UIView alloc] initWithFrame:frame];
     self.view.autoresizesSubviews = YES;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.view.backgroundColor = TTSTYLEVAR(backgroundColor);

@@ -73,8 +73,6 @@ static const CGFloat    kDefaultMessageImageHeight  = 34;
   TT_RELEASE_SAFELY(_titleLabel);
   TT_RELEASE_SAFELY(_timestampLabel);
   TT_RELEASE_SAFELY(_imageView2);
-
-  [super dealloc];
 }
 
 

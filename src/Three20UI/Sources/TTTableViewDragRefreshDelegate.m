@@ -80,7 +80,7 @@ static const CGFloat kHeaderVisibleHeight = 60.0f;
     [_controller.tableView addSubview:_headerView];
 
     // Hook up to the model to listen for changes.
-    _model = [controller.model retain];
+    _model = controller.model;
     [_model.delegates addObject:self];
 
     // Grab the last refresh date if there is one.
@@ -102,8 +102,6 @@ static const CGFloat kHeaderVisibleHeight = 60.0f;
   [_headerView removeFromSuperview];
   TT_RELEASE_SAFELY(_headerView);
   TT_RELEASE_SAFELY(_model);
-
-  [super dealloc];
 }
 
 

@@ -114,11 +114,11 @@ TT_FIX_CATEGORY_BUG(UIViewControllerAdditions)
 
     if (nil == gsGarbageCollectorTimer) {
       gsGarbageCollectorTimer =
-        [[NSTimer scheduledTimerWithTimeInterval: kGarbageCollectionInterval
-                                          target: [UIViewController class]
-                                        selector: @selector(doCommonGarbageCollection)
-                                        userInfo: nil
-                                         repeats: YES] retain];
+        [NSTimer scheduledTimerWithTimeInterval: kGarbageCollectionInterval
+                                         target: [UIViewController class]
+                                       selector: @selector(doCommonGarbageCollection)
+                                       userInfo: nil
+                                        repeats: YES];
     }
 #if TTDFLAG_CONTROLLERGARBAGECOLLECTION
 
@@ -359,7 +359,7 @@ TT_FIX_CATEGORY_BUG(UIViewControllerAdditions)
     for (UIViewController* controller in fullControllerList) {
 
       // Subtract one from the retain count here due to the copied set.
-      NSInteger retainCount = [controller retainCount] - 1;
+      NSInteger retainCount = 1;//[controller retainCount] - 1;
 
       TTDCONDITIONLOG(TTDFLAG_CONTROLLERGARBAGECOLLECTION,
                       @"Retain count for %X is %d", (unsigned int)controller, retainCount);

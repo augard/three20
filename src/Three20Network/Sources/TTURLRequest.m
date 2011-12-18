@@ -73,20 +73,20 @@ const NSTimeInterval TTURLRequestUseDefaultTimeout = -1.0;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTURLRequest*)request {
-  return [[[self alloc] init] autorelease];
+  return [[self alloc] init];
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTURLRequest*)requestWithURL:(NSString*)URL delegate:(id /*<TTURLRequestDelegate>*/)delegate {
-  return [[[self alloc] initWithURL:URL delegate:delegate] autorelease];
+  return [[self alloc] initWithURL:URL delegate:delegate];
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithURL:(NSString*)URL delegate:(id /*<TTURLRequestDelegate>*/)delegate {
   if ((self = [self init])) {
-    _urlPath = [URL retain];
+    _urlPath = URL;
     if (nil != delegate) {
       [_delegates addObject:delegate];
     }
@@ -125,7 +125,6 @@ const NSTimeInterval TTURLRequestUseDefaultTimeout = -1.0;
   TT_RELEASE_SAFELY(_files);
   TT_RELEASE_SAFELY(_delegates);
 
-  [super dealloc];
 }
 
 
@@ -139,7 +138,7 @@ const NSTimeInterval TTURLRequestUseDefaultTimeout = -1.0;
 - (NSString*)generateCacheKey {
   if ([_httpMethod isEqualToString:@"POST"]
       || [_httpMethod isEqualToString:@"PUT"]) {
-    NSMutableString* joined = [[[NSMutableString alloc] initWithString:self.urlPath] autorelease];
+    NSMutableString* joined = [[NSMutableString alloc] initWithString:self.urlPath];
     for (NSString* key in [_parameters allKeys]) {
       [joined appendString:key];
       [joined appendString:@"="];
@@ -320,7 +319,7 @@ const NSTimeInterval TTURLRequestUseDefaultTimeout = -1.0;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSString*)cacheKey {
   if (!_cacheKey) {
-    _cacheKey = [[self generateCacheKey] retain];
+    _cacheKey = [self generateCacheKey];
   }
   return _cacheKey;
 }
@@ -394,7 +393,6 @@ const NSTimeInterval TTURLRequestUseDefaultTimeout = -1.0;
  */
 - (void)setURL:(NSString*)urlPath {
   NSString* aUrlPath = [urlPath copy];
-  [_urlPath release];
   _urlPath = aUrlPath;
 }
 

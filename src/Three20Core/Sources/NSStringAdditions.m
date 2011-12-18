@@ -59,7 +59,7 @@ TT_FIX_CATEGORY_BUG(NSStringAdditions)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSString*)stringByRemovingHTMLTags {
-  TTMarkupStripper* stripper = [[[TTMarkupStripper alloc] init] autorelease];
+  TTMarkupStripper* stripper = [[TTMarkupStripper alloc] init];
   return [stripper parse:self];
 }
 
@@ -72,7 +72,7 @@ TT_FIX_CATEGORY_BUG(NSStringAdditions)
 - (NSDictionary*)queryDictionaryUsingEncoding:(NSStringEncoding)encoding {
   NSCharacterSet* delimiterSet = [NSCharacterSet characterSetWithCharactersInString:@"&;"];
   NSMutableDictionary* pairs = [NSMutableDictionary dictionary];
-  NSScanner* scanner = [[[NSScanner alloc] initWithString:self] autorelease];
+  NSScanner* scanner = [[NSScanner alloc] initWithString:self];
   while (![scanner isAtEnd]) {
     NSString* pairString = nil;
     [scanner scanUpToCharactersFromSet:delimiterSet intoString:&pairString];
@@ -94,7 +94,7 @@ TT_FIX_CATEGORY_BUG(NSStringAdditions)
 - (NSDictionary*)queryContentsUsingEncoding:(NSStringEncoding)encoding {
   NSCharacterSet* delimiterSet = [NSCharacterSet characterSetWithCharactersInString:@"&;"];
   NSMutableDictionary* pairs = [NSMutableDictionary dictionary];
-  NSScanner* scanner = [[[NSScanner alloc] initWithString:self] autorelease];
+  NSScanner* scanner = [[NSScanner alloc] initWithString:self];
   while (![scanner isAtEnd]) {
     NSString* pairString = nil;
     [scanner scanUpToCharactersFromSet:delimiterSet intoString:&pairString];
@@ -144,11 +144,11 @@ TT_FIX_CATEGORY_BUG(NSStringAdditions)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)urlEncoded {
   CFStringRef cfUrlEncodedString = CFURLCreateStringByAddingPercentEscapes(NULL,
-                                            (CFStringRef)self,NULL,
+                                            (__bridge CFStringRef)self,NULL,
                                             (CFStringRef)@"!*’();:@&=$,/?%#[]",
                                             kCFStringEncodingUTF8);
 
-  NSString *urlEncoded = [NSString stringWithString:(NSString *)cfUrlEncodedString];
+  NSString *urlEncoded = [NSString stringWithString:(__bridge NSString *)cfUrlEncodedString];
   CFRelease(cfUrlEncodedString);
   return urlEncoded;
 }

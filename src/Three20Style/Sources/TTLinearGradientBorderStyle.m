@@ -55,7 +55,6 @@
   TT_RELEASE_SAFELY(_color1);
   TT_RELEASE_SAFELY(_color2);
 
-  [super dealloc];
 }
 
 
@@ -68,8 +67,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTLinearGradientBorderStyle*)styleWithColor1:(UIColor*)color1 color2:(UIColor*)color2
                                           width:(CGFloat)width next:(TTStyle*)next {
-  TTLinearGradientBorderStyle* style = [[[TTLinearGradientBorderStyle alloc] initWithNext:next]
-                                        autorelease];
+  TTLinearGradientBorderStyle* style = [[TTLinearGradientBorderStyle alloc] initWithNext:next];
   style.color1 = color1;
   style.color2 = color2;
   style.width = width;
@@ -81,8 +79,7 @@
 + (TTLinearGradientBorderStyle*)styleWithColor1:(UIColor*)color1 location1:(CGFloat)location1
                                          color2:(UIColor*)color2 location2:(CGFloat)location2
                                           width:(CGFloat)width next:(TTStyle*)next {
-  TTLinearGradientBorderStyle* style = [[[TTLinearGradientBorderStyle alloc] initWithNext:next]
-                                        autorelease];
+  TTLinearGradientBorderStyle* style = [[TTLinearGradientBorderStyle alloc] initWithNext:next];
   style.color1 = color1;
   style.color2 = color2;
   style.width = width;
@@ -111,9 +108,8 @@
   CGContextReplacePathWithStrokedPath(ctx);
   CGContextClip(ctx);
 
-  UIColor* colors[] = {_color1, _color2};
   CGFloat locations[] = {_location1, _location2};
-  CGGradientRef gradient = [self newGradientWithColors:colors locations:locations count:2];
+  CGGradientRef gradient = [self newGradientWithColors:[NSArray arrayWithObjects:_color1, _color2, nil] locations:locations count:2];
   CGContextDrawLinearGradient(ctx, gradient, CGPointMake(rect.origin.x, rect.origin.y),
                               CGPointMake(rect.origin.x, rect.origin.y+rect.size.height),
                               kCGGradientDrawsAfterEndLocation);

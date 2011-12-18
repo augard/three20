@@ -18,12 +18,12 @@
 #import "Three20Style/TTStyledBoxFrame.h"
 
 @interface TTStyledInlineFrame : TTStyledBoxFrame {
-  TTStyledInlineFrame* _inlinePreviousFrame;
-  TTStyledInlineFrame* _inlineNextFrame;
+  TTStyledInlineFrame* unsafe_unretained _inlinePreviousFrame;
+  TTStyledInlineFrame* unsafe_unretained _inlineNextFrame;
 }
 
 @property (nonatomic, readonly) TTStyledInlineFrame* inlineParentFrame;
-@property (nonatomic, assign)   TTStyledInlineFrame* inlinePreviousFrame;
-@property (nonatomic, assign)   TTStyledInlineFrame* inlineNextFrame;
+@property (nonatomic, unsafe_unretained)   TTStyledInlineFrame* inlinePreviousFrame;
+@property (nonatomic, unsafe_unretained)   TTStyledInlineFrame* inlineNextFrame;
 
 @end

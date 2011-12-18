@@ -37,7 +37,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNext:(TTStyle*)next {
   if ((self = [super init])) {
-    _next = [next retain];
+    _next = next;
   }
 
   return self;
@@ -57,7 +57,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_next);
 
-  [super dealloc];
 }
 
 
@@ -108,7 +107,7 @@
     [_next addStyle:style];
 
   } else {
-    _next = [style retain];
+    _next = style;
   }
 }
 

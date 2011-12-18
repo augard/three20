@@ -36,7 +36,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_color);
 
-  [super dealloc];
 }
 
 
@@ -48,7 +47,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTSolidFillStyle*)styleWithColor:(UIColor*)color next:(TTStyle*)next {
-  TTSolidFillStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTSolidFillStyle* style = [[self alloc] initWithNext:next];
   style.color = color;
   return style;
 }

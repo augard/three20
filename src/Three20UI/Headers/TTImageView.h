@@ -33,7 +33,7 @@
   UIImage*      _defaultImage;
   BOOL          _autoresizesToImage;
 
-  id<TTImageViewDelegate> _delegate;
+  id<TTImageViewDelegate> __unsafe_unretained _delegate;
 }
 
 /**
@@ -74,7 +74,7 @@
 /**
  * A delegate that notifies you when the image has started and finished loading.
  */
-@property (nonatomic, assign) id<TTImageViewDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id<TTImageViewDelegate> delegate;
 
 /**
  * The TTURLRequest requester used to load this image.

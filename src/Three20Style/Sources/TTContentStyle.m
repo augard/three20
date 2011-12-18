@@ -35,7 +35,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTContentStyle*)styleWithNext:(TTStyle*)next {
-  return [[[self alloc] initWithNext:next] autorelease];
+  return [[self alloc] initWithNext:next];
 }
 
 

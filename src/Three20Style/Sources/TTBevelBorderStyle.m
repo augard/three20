@@ -55,7 +55,6 @@
   TT_RELEASE_SAFELY(_highlight);
   TT_RELEASE_SAFELY(_shadow);
 
-  [super dealloc];
 }
 
 
@@ -78,7 +77,7 @@
                                     width:(CGFloat)width
                               lightSource:(NSInteger)lightSource
                                      next:(TTStyle*)next {
-  TTBevelBorderStyle* style = [[[TTBevelBorderStyle alloc] initWithNext:next] autorelease];
+  TTBevelBorderStyle* style = [[TTBevelBorderStyle alloc] initWithNext:next];
   style.highlight = highlight;
   style.shadow = shadowColor;
   style.width = width;

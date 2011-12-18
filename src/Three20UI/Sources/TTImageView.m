@@ -66,7 +66,6 @@
   TT_RELEASE_SAFELY(_urlPath);
   TT_RELEASE_SAFELY(_image);
   TT_RELEASE_SAFELY(_defaultImage);
-  [super dealloc];
 }
 
 
@@ -115,8 +114,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidStartLoad:(TTURLRequest*)request {
-  [_request release];
-  _request = [request retain];
+  _request = request;
 
   [self imageViewDidStartLoad];
   if ([_delegate respondsToSelector:@selector(imageViewDidStartLoad:)]) {
@@ -207,7 +205,7 @@
 
     } else {
       TTURLRequest* request = [TTURLRequest requestWithURL:_urlPath delegate:self];
-      request.response = [[[TTURLImageResponse alloc] init] autorelease];
+      request.response = [[TTURLImageResponse alloc] init];
 
       // Give the delegate one chance to configure the requester.
       if ([_delegate respondsToSelector:@selector(imageView:willSendARequest:)]) {
@@ -262,8 +260,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setDefaultImage:(UIImage*)theDefaultImage {
   if (_defaultImage != theDefaultImage) {
-    [_defaultImage release];
-    _defaultImage = [theDefaultImage retain];
+    _defaultImage = theDefaultImage;
   }
   if (nil == _urlPath || 0 == _urlPath.length) {
     //no url path set yet, so use it as the current image
@@ -283,7 +280,6 @@
 
   {
     NSString* urlPathCopy = [urlPath copy];
-    [_urlPath release];
     _urlPath = urlPathCopy;
   }
 

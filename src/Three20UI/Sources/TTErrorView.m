@@ -82,7 +82,6 @@ static const CGFloat kHPadding  = 10;
   TT_RELEASE_SAFELY(_titleView);
   TT_RELEASE_SAFELY(_subtitleView);
 
-  [super dealloc];
 }
 
 

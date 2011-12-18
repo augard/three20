@@ -60,7 +60,6 @@
   TT_RELEASE_SAFELY(_image);
   TT_RELEASE_SAFELY(_defaultImage);
 
-  [super dealloc];
 }
 
 
@@ -97,8 +96,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setURL:(NSString*)URL {
   if (nil == _URL || ![URL isEqualToString:_URL]) {
-    [_URL release];
-    _URL = [URL retain];
+    _URL = URL;
 
     if (nil != _URL) {
       self.image = [[TTURLCache sharedCache] imageForURL:_URL];

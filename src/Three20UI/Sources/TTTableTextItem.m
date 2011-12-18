@@ -31,8 +31,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   TT_RELEASE_SAFELY(_text);
-
-  [super dealloc];
 }
 
 
@@ -44,7 +42,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text {
-  TTTableTextItem* item = [[[self alloc] init] autorelease];
+  TTTableTextItem* item = [[self alloc] init];
   item.text = text;
   return item;
 }
@@ -52,7 +50,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text URL:(NSString*)URL {
-  TTTableTextItem* item = [[[self alloc] init] autorelease];
+  TTTableTextItem* item = [[self alloc] init];
   item.text = text;
   item.URL = URL;
   return item;
@@ -61,7 +59,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text URL:(NSString*)URL accessoryURL:(NSString*)accessoryURL {
-  TTTableTextItem* item = [[[self alloc] init] autorelease];
+  TTTableTextItem* item = [[self alloc] init];
   item.text = text;
   item.URL = URL;
   item.accessoryURL = accessoryURL;
@@ -71,7 +69,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text delegate:(id)delegate selector:(SEL)selector {
-  TTTableTextItem* item = [[[self alloc] init] autorelease];
+  TTTableTextItem* item = [[self alloc] init];
   item.text = text;
   item.delegate = delegate;
   item.selector = selector;

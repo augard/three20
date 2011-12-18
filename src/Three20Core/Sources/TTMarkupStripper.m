@@ -31,7 +31,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_strings);
 
-  [super dealloc];
 }
 
 

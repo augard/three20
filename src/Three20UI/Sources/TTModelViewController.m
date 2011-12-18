@@ -62,7 +62,6 @@
   [_model.delegates removeObject:self];
   TT_RELEASE_SAFELY(_model);
   TT_RELEASE_SAFELY(_modelError);
-  [super dealloc];
 }
 
 
@@ -183,7 +182,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createInterstitialModel {
-  self.model = [[[TTModel alloc] init] autorelease];
+  self.model = [[TTModel alloc] init];
 }
 
 
@@ -335,8 +334,7 @@
 - (void)setModel:(id<TTModel>)model {
   if (_model != model) {
     [_model.delegates removeObject:self];
-    [_model release];
-    _model = [model retain];
+    _model = model;
     [_model.delegates addObject:self];
     TT_RELEASE_SAFELY(_modelError);
 
@@ -355,8 +353,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setModelError:(NSError*)error {
   if (error != _modelError) {
-    [_modelError release];
-    _modelError = [error retain];
+    _modelError = error;
 
     [self invalidateView];
   }

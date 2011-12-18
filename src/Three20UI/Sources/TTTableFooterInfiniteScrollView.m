@@ -42,9 +42,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
-    self.indicator = [[[UIActivityIndicatorView alloc]
-                       initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray]
-                      autorelease];
+    self.indicator = [[UIActivityIndicatorView alloc]
+                       initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.indicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |
     UIViewAutoresizingFlexibleRightMargin;
 

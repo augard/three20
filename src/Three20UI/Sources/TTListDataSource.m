@@ -44,8 +44,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   TT_RELEASE_SAFELY(_items);
-
-  [super dealloc];
 }
 
 
@@ -66,13 +64,13 @@
   }
   va_end(ap);
 
-  return [[[self alloc] initWithItems:items] autorelease];
+  return [[self alloc] initWithItems:items];
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTListDataSource*)dataSourceWithItems:(NSMutableArray*)items {
-  return [[[self alloc] initWithItems:items] autorelease];
+  return [[self alloc] initWithItems:items];
 }
 
 

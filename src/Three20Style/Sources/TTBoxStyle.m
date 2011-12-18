@@ -55,7 +55,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTBoxStyle*)styleWithMargin:(UIEdgeInsets)margin next:(TTStyle*)next {
-  TTBoxStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTBoxStyle* style = [[self alloc] initWithNext:next];
   style.margin = margin;
   return style;
 }
@@ -63,7 +63,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTBoxStyle*)styleWithPadding:(UIEdgeInsets)padding next:(TTStyle*)next {
-  TTBoxStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTBoxStyle* style = [[self alloc] initWithNext:next];
   style.padding = padding;
   return style;
 }
@@ -71,7 +71,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTBoxStyle*)styleWithFloats:(TTPosition)position next:(TTStyle*)next {
-  TTBoxStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTBoxStyle* style = [[self alloc] initWithNext:next];
   style.position = position;
   return style;
 }
@@ -80,7 +80,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTBoxStyle*)styleWithMargin:(UIEdgeInsets)margin padding:(UIEdgeInsets)padding
                           next:(TTStyle*)next {
-  TTBoxStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTBoxStyle* style = [[self alloc] initWithNext:next];
   style.margin = margin;
   style.padding = padding;
   return style;
@@ -90,7 +90,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTBoxStyle*)styleWithMargin:(UIEdgeInsets)margin padding:(UIEdgeInsets)padding
                        minSize:(CGSize)minSize position:(TTPosition)position next:(TTStyle*)next {
-  TTBoxStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTBoxStyle* style = [[self alloc] initWithNext:next];
   style.margin = margin;
   style.padding = padding;
   style.minSize = minSize;

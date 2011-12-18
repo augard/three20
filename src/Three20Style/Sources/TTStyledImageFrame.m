@@ -50,7 +50,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_style);
 
-  [super dealloc];
 }
 
 
@@ -102,7 +101,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)drawInRect:(CGRect)rect {
   if (_style) {
-    TTStyleContext* context = [[[TTStyleContext alloc] init] autorelease];
+    TTStyleContext* context = [[TTStyleContext alloc] init];
     context.delegate = self;
     context.frame = rect;
     context.contentFrame = rect;

@@ -110,8 +110,8 @@
     _previousLocationInWindow = location;
 
     UIView *target = [view.window hitTest:_locationInWindow withEvent:nil];
-    _view = [target retain];
-    _window = [view.window retain];
+    _view = target;
+    _window = view.window;
     _phase = UITouchPhaseBegan;
     _touchFlags._firstTouchForView = 1;
     _touchFlags._isTap = 1;
@@ -138,7 +138,7 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithTouch:(UITouch *)touch {
+/*- (id)initWithTouch:(UITouch *)touch {
 	self = [super init];
   if (self) {
     UIEventFake *selfFake = (UIEventFake*)self;
@@ -158,7 +158,7 @@
     selfFake->_keyedTouches = dict;
   }
   return self;
-}
+}*/
 
 
 @end
@@ -426,7 +426,7 @@ TT_FIX_CATEGORY_BUG(UIViewAdditions)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)simulateTapAtPoint:(CGPoint)location {
-  UITouch *touch = [[[UITouch alloc] initInView:self location:location] autorelease];
+/*  UITouch *touch = [[[UITouch alloc] initInView:self location:location] autorelease];
 
   UIEvent *eventDown = [[[UIEvent alloc] initWithTouch:touch] autorelease];
   [touch.view touchesBegan:[NSSet setWithObject:touch] withEvent:eventDown];
@@ -435,6 +435,7 @@ TT_FIX_CATEGORY_BUG(UIViewAdditions)
 
   UIEvent *eventUp = [[[UIEvent alloc] initWithTouch:touch] autorelease];
   [touch.view touchesEnded:[NSSet setWithObject:touch] withEvent:eventUp];
+*/
 }
 
 #endif

@@ -33,8 +33,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_caption);
   TT_RELEASE_SAFELY(_view);
-
-  [super dealloc];
 }
 
 
@@ -46,7 +44,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithCaption:(NSString*)caption view:(UIControl*)view {
-  TTTableViewItem* item = [[[self alloc] init] autorelease];
+  TTTableViewItem* item = [[self alloc] init];
   item.caption = caption;
   item.view = view;
   return item;

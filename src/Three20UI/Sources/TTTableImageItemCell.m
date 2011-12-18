@@ -59,8 +59,6 @@ static const CGFloat kDefaultImageSize = 50;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   TT_RELEASE_SAFELY(_imageView2);
-
-  [super dealloc];
 }
 
 

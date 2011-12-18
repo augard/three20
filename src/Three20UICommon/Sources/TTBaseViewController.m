@@ -78,8 +78,6 @@
   // I would prefer not to have to redundantly put all view releases in dealloc and
   // viewDidUnload, so my solution is just to call viewDidUnload here.
   [self viewDidUnload];
-
-  [super dealloc];
 }
 
 
@@ -133,8 +131,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setFrozenState:(NSDictionary*)frozenState {
-  [_frozenState release];
-  _frozenState = [frozenState retain];
+  _frozenState = frozenState;
 }
 
 

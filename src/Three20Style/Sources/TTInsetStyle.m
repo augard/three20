@@ -46,7 +46,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTInsetStyle*)styleWithInset:(UIEdgeInsets)inset next:(TTStyle*)next {
-  TTInsetStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTInsetStyle* style = [[self alloc] initWithNext:next];
   style.inset = inset;
   return style;
 }

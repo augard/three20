@@ -65,8 +65,7 @@ static TTURLRequestQueue* gMainQueue = nil;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (void)setMainQueue:(TTURLRequestQueue*)queue {
   if (gMainQueue != queue) {
-    [gMainQueue release];
-    gMainQueue = [queue retain];
+    gMainQueue = queue;
   }
 }
 
@@ -90,7 +89,6 @@ static TTURLRequestQueue* gMainQueue = nil;
   TT_RELEASE_SAFELY(_loaders);
   TT_RELEASE_SAFELY(_loaderQueue);
   TT_RELEASE_SAFELY(_userAgent);
-  [super dealloc];
 }
 
 
@@ -308,10 +306,9 @@ static TTURLRequestQueue* gMainQueue = nil;
        i < kMaxConcurrentLoads && _totalLoading < kMaxConcurrentLoads
        && _loaderQueue.count;
        ++i) {
-    TTRequestLoader* loader = [[_loaderQueue objectAtIndex:0] retain];
+    TTRequestLoader* loader = [_loaderQueue objectAtIndex:0];
     [_loaderQueue removeObjectAtIndex:0];
     [self executeLoader:loader];
-    [loader release];
   }
 
   if (_loaderQueue.count && !_suspended) {
@@ -390,7 +387,6 @@ static TTURLRequestQueue* gMainQueue = nil;
     ++_totalLoading;
     [loader load:[NSURL URLWithString:request.urlPath]];
   }
-  [loader release];
 
   return NO;
 }
@@ -438,11 +434,9 @@ static TTURLRequestQueue* gMainQueue = nil;
   if (request) {
     TTRequestLoader* loader = [_loaders objectForKey:request.cacheKey];
     if (loader) {
-      [loader retain];
       if (![loader cancel:request]) {
         [_loaderQueue removeObject:loader];
       }
-      [loader release];
     }
   }
 }
@@ -484,7 +478,7 @@ static TTURLRequestQueue* gMainQueue = nil;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)cancelAllRequests {
-  for (TTRequestLoader* loader in [[[_loaders copy] autorelease] objectEnumerator]) {
+  for (TTRequestLoader* loader in [[_loaders copy] objectEnumerator]) {
     [loader cancel];
   }
 }
@@ -569,7 +563,6 @@ static TTURLRequestQueue* gMainQueue = nil;
 - (void)     loader: (TTRequestLoader*)loader
     didLoadResponse: (NSHTTPURLResponse*)response
                data: (id)data {
-  [loader retain];
   [self removeLoader:loader];
 
   NSError* error = [loader processResponse:response data:data];
@@ -628,8 +621,6 @@ static TTURLRequestQueue* gMainQueue = nil;
     }
     [loader dispatchLoaded:[NSDate date]];
   }
-  [loader release];
-
   [self loadNextInQueue];
 }
 
@@ -637,7 +628,6 @@ static TTURLRequestQueue* gMainQueue = nil;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)               loader:(TTRequestLoader*)loader
     didLoadUnmodifiedResponse:(NSHTTPURLResponse*)response {
-  [loader retain];
   [self removeLoader:loader];
 
   NSData* data = nil;
@@ -663,8 +653,6 @@ static TTURLRequestQueue* gMainQueue = nil;
   if (nil != error) {
     [loader dispatchError:error];
   }
-
-  [loader release];
 
   [self loadNextInQueue];
 }

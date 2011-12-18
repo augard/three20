@@ -54,8 +54,6 @@ static const CGFloat kControlPadding = 8;
 - (void)dealloc {
   TT_RELEASE_SAFELY(_item);
   TT_RELEASE_SAFELY(_control);
-
-  [super dealloc];
 }
 
 
@@ -196,11 +194,11 @@ static const CGFloat kControlPadding = 8;
     TT_RELEASE_SAFELY(_item);
 
     if ([object isKindOfClass:[UIView class]]) {
-      _control = [object retain];
+      _control = object;
 
     } else if ([object isKindOfClass:[TTTableControlItem class]]) {
-      _item = [object retain];
-      _control = [_item.control retain];
+      _item = object;
+      _control = _item.control;
     }
 
     _control.backgroundColor = [UIColor clearColor];

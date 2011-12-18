@@ -32,14 +32,14 @@
   TTStyle*      _style;
   TTURLRequest* _request;
 
-  id<TTImageViewDelegate> _delegate;
+  id<TTImageViewDelegate> __unsafe_unretained _delegate;
 }
 
 @property (nonatomic, copy)   NSString* title;
 @property (nonatomic, copy)   NSString* imageURL;
 @property (nonatomic, retain) UIImage*  image;
 @property (nonatomic, retain) TTStyle*  style;
-@property (nonatomic, assign) id<TTImageViewDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id<TTImageViewDelegate> delegate;
 
 - (id)initWithButton:(TTButton*)button;
 

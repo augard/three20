@@ -67,8 +67,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   TT_RELEASE_SAFELY(_model);
-
-  [super dealloc];
 }
 
 
@@ -124,10 +122,9 @@
   UITableViewCell* cell =
     (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
   if (cell == nil) {
-    cell = [[[cellClass alloc] initWithStyle:UITableViewCellStyleDefault
-                               reuseIdentifier:identifier] autorelease];
+    cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault
+                            reuseIdentifier:identifier];
   }
-  [identifier release];
 
   if ([cell isKindOfClass:[TTTableViewCell class]]) {
     [(TTTableViewCell*)cell setObject:object];

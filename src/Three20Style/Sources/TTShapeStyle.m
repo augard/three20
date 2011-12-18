@@ -37,7 +37,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_shape);
 
-  [super dealloc];
 }
 
 
@@ -49,7 +48,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTShapeStyle*)styleWithShape:(TTShape*)shape next:(TTStyle*)next {
-  TTShapeStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTShapeStyle* style = [[self alloc] initWithNext:next];
   style.shape = shape;
   return style;
 }

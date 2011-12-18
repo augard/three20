@@ -36,7 +36,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTRoundedRightArrowShape*)shapeWithRadius:(CGFloat)radius {
-  TTRoundedRightArrowShape* shape = [[[TTRoundedRightArrowShape alloc] init] autorelease];
+  TTRoundedRightArrowShape* shape = [[TTRoundedRightArrowShape alloc] init];
   shape.radius = radius;
   return shape;
 }

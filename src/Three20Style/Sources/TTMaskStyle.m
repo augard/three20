@@ -35,7 +35,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_mask);
 
-  [super dealloc];
 }
 
 
@@ -47,7 +46,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTMaskStyle*)styleWithMask:(UIImage*)mask next:(TTStyle*)next {
-  TTMaskStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTMaskStyle* style = [[self alloc] initWithNext:next];
   style.mask = mask;
   return style;
 }

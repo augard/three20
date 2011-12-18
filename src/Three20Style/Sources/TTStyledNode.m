@@ -52,7 +52,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_nextSibling);
 
-  [super dealloc];
 }
 
 
@@ -65,8 +64,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setNextSibling:(TTStyledNode*)node {
   if (node != _nextSibling) {
-    [_nextSibling release];
-    _nextSibling = [node retain];
+    _nextSibling = node;
     node.parentNode = _parentNode;
   }
 }

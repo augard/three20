@@ -34,8 +34,6 @@ BOOL TTIsDocumentsURL(NSString* URL) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 void TTSetDefaultBundle(NSBundle* bundle) {
-  [bundle retain];
-  [globalBundle release];
   globalBundle = bundle;
 }
 
@@ -59,7 +57,7 @@ NSString* TTPathForDocumentsResource(NSString* relativePath) {
   if (nil == documentsPath) {
     NSArray* dirs = NSSearchPathForDirectoriesInDomains(
       NSDocumentDirectory, NSUserDomainMask, YES);
-    documentsPath = [[dirs objectAtIndex:0] retain];
+    documentsPath = [dirs objectAtIndex:0];
   }
   return [documentsPath stringByAppendingPathComponent:relativePath];
 }

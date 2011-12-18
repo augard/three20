@@ -46,7 +46,6 @@
   TT_RELEASE_SAFELY(_text);
   TT_RELEASE_SAFELY(_font);
 
-  [super dealloc];
 }
 
 

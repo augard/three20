@@ -42,7 +42,7 @@ static const CGFloat kInsetWidth = 5;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTSpeechBubbleShape*)shapeWithRadius:(CGFloat)radius pointLocation:(CGFloat)pointLocation
                              pointAngle:(CGFloat)pointAngle pointSize:(CGSize)pointSize {
-  TTSpeechBubbleShape* shape = [[[TTSpeechBubbleShape alloc] init] autorelease];
+  TTSpeechBubbleShape* shape = [[TTSpeechBubbleShape alloc] init];
   shape.radius = radius;
   shape.pointLocation = pointLocation;
   shape.pointAngle = pointAngle;

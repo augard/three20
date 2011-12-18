@@ -50,7 +50,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_color);
 
-  [super dealloc];
 }
 
 
@@ -63,7 +62,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTShadowStyle*)styleWithColor:(UIColor*)color blur:(CGFloat)blur offset:(CGSize)offset
                             next:(TTStyle*)next {
-  TTShadowStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTShadowStyle* style = [[self alloc] initWithNext:next];
   style.color = color;
   style.blur = blur;
   style.offset = offset;

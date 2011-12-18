@@ -70,7 +70,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   TT_RELEASE_SAFELY(_headers);
-  [super dealloc];
 }
 
 
@@ -104,7 +103,7 @@
           if (nil == _headers) {
             _headers = [[NSMutableDictionary alloc] init];
           }
-          header = [[[TTTableHeaderView alloc] initWithTitle:title] autorelease];
+          header = [[TTTableHeaderView alloc] initWithTitle:title];
           [_headers setObject:header forKey:title];
         }
         return header;

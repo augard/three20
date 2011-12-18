@@ -31,8 +31,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   TT_RELEASE_SAFELY(_caption);
-
-  [super dealloc];
 }
 
 
@@ -44,7 +42,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text caption:(NSString*)caption {
-  TTTableCaptionItem* item = [[[self alloc] init] autorelease];
+  TTTableCaptionItem* item = [[self alloc] init];
   item.text = text;
   item.caption = caption;
   return item;
@@ -53,7 +51,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text caption:(NSString*)caption URL:(NSString*)URL {
-  TTTableCaptionItem* item = [[[self alloc] init] autorelease];
+  TTTableCaptionItem* item = [[self alloc] init];
   item.text = text;
   item.caption = caption;
   item.URL = URL;
@@ -64,7 +62,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text caption:(NSString*)caption URL:(NSString*)URL
       accessoryURL:(NSString*)accessoryURL {
-  TTTableCaptionItem* item = [[[self alloc] init] autorelease];
+  TTTableCaptionItem* item = [[self alloc] init];
   item.text = text;
   item.caption = caption;
   item.URL = URL;

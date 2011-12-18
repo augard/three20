@@ -70,7 +70,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_URL);
 
-  [super dealloc];
 }
 
 

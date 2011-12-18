@@ -21,9 +21,9 @@ extern const NSInteger kDefaultLightSource;
 
 @interface TTStyle (TTInternal)
 
-- (CGGradientRef)newGradientWithColors:(UIColor**)colors locations:(CGFloat*)locations
+- (CGGradientRef)newGradientWithColors:(NSArray*)colors locations:(CGFloat*)locations
                                  count:(int)count;
 
-- (CGGradientRef)newGradientWithColors:(UIColor**)colors count:(int)count;
+- (CGGradientRef)newGradientWithColors:(NSArray*)colors count:(int)count;
 
 @end

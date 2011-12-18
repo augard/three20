@@ -50,7 +50,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_activityLabel);
   TT_RELEASE_SAFELY(_item);
-  [super dealloc];
 }
 
 
@@ -83,8 +82,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setObject:(id)object {
   if (_item != object) {
-    [_item release];
-    _item = [object retain];
+    _item = object;
 
     TTTableActivityItem* item = object;
     _activityLabel.text = item.text;

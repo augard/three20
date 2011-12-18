@@ -61,8 +61,6 @@ static const CGFloat kCancelHighlightThreshold = 4;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
   TT_RELEASE_SAFELY(_highlightedLabel);
-
-  [super dealloc];
 }
 
 
@@ -219,7 +217,7 @@ static const CGFloat kCancelHighlightThreshold = 4;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (CAGradientLayer*)shadowAsInverse:(BOOL)inverse {
-  CAGradientLayer* newShadow = [[[CAGradientLayer alloc] init] autorelease];
+  CAGradientLayer* newShadow = [[CAGradientLayer alloc] init];
   CGRect newShadowFrame = CGRectMake(0.0, 0.0,
                                      self.frame.size.width,
                                      inverse ? kShadowInverseHeight : kShadowHeight);
@@ -235,8 +233,8 @@ static const CGFloat kCancelHighlightThreshold = 4;
                            colorWithAlphaComponent:0.0].CGColor;
 
   newShadow.colors = [NSArray arrayWithObjects:
-            (id)(inverse ? lightColor : darkColor),
-            (id)(inverse ? darkColor : lightColor),
+            (__bridge id)(inverse ? lightColor : darkColor),
+            (__bridge id)(inverse ? darkColor : lightColor),
             nil];
   return newShadow;
 }
@@ -292,7 +290,7 @@ static const CGFloat kCancelHighlightThreshold = 4;
 
     // Create the top shadow if necessary.
     if (nil == _topShadow) {
-      _topShadow = [[self shadowAsInverse:YES] retain];
+      _topShadow = [self shadowAsInverse:YES];
       [cell.layer insertSublayer:_topShadow atIndex:0];
 
     }  else if ([cell.layer.sublayers indexOfObjectIdenticalTo:_topShadow] != 0) {
@@ -318,7 +316,7 @@ static const CGFloat kCancelHighlightThreshold = 4;
     UIView* cell = [self cellForRowAtIndexPath:lastRow];
 
     if (nil == _bottomShadow) {
-      _bottomShadow = [[self shadowAsInverse:NO] retain];
+      _bottomShadow = [self shadowAsInverse:NO];
       [cell.layer insertSublayer:_bottomShadow atIndex:0];
 
     }  else if ([cell.layer.sublayers indexOfObjectIdenticalTo:_bottomShadow] != 0) {
@@ -348,8 +346,7 @@ static const CGFloat kCancelHighlightThreshold = 4;
 - (void)setHighlightedLabel:(TTStyledTextLabel*)label {
   if (label != _highlightedLabel) {
     _highlightedLabel.highlightedNode = nil;
-    [_highlightedLabel release];
-    _highlightedLabel = [label retain];
+    _highlightedLabel = label;
   }
 }
 

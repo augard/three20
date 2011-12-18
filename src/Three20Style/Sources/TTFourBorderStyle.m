@@ -57,7 +57,6 @@
   TT_RELEASE_SAFELY(_bottom);
   TT_RELEASE_SAFELY(_left);
 
-  [super dealloc];
 }
 
 
@@ -70,7 +69,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTFourBorderStyle*)styleWithTop:(UIColor*)top right:(UIColor*)right bottom:(UIColor*)bottom
                               left:(UIColor*)left width:(CGFloat)width next:(TTStyle*)next {
-  TTFourBorderStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTFourBorderStyle* style = [[self alloc] initWithNext:next];
   style.top = top;
   style.right = right;
   style.bottom = bottom;
@@ -82,7 +81,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTFourBorderStyle*)styleWithTop:(UIColor*)top width:(CGFloat)width next:(TTStyle*)next {
-  TTFourBorderStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTFourBorderStyle* style = [[self alloc] initWithNext:next];
   style.top = top;
   style.width = width;
   return style;
@@ -91,7 +90,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTFourBorderStyle*)styleWithRight:(UIColor*)right width:(CGFloat)width next:(TTStyle*)next {
-  TTFourBorderStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTFourBorderStyle* style = [[self alloc] initWithNext:next];
   style.right = right;
   style.width = width;
   return style;
@@ -100,7 +99,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTFourBorderStyle*)styleWithBottom:(UIColor*)bottom width:(CGFloat)width next:(TTStyle*)next {
-  TTFourBorderStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTFourBorderStyle* style = [[self alloc] initWithNext:next];
   style.bottom = bottom;
   style.width = width;
   return style;
@@ -109,7 +108,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTFourBorderStyle*)styleWithLeft:(UIColor*)left width:(CGFloat)width next:(TTStyle*)next {
-  TTFourBorderStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTFourBorderStyle* style = [[self alloc] initWithNext:next];
   style.left = left;
   style.width = width;
   return style;

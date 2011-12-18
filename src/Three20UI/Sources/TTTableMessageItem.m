@@ -37,8 +37,6 @@
   TT_RELEASE_SAFELY(_caption);
   TT_RELEASE_SAFELY(_timestamp);
   TT_RELEASE_SAFELY(_imageURL);
-
-  [super dealloc];
 }
 
 
@@ -51,7 +49,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithTitle:(NSString*)title caption:(NSString*)caption text:(NSString*)text
           timestamp:(NSDate*)timestamp URL:(NSString*)URL {
-  TTTableMessageItem* item = [[[self alloc] init] autorelease];
+  TTTableMessageItem* item = [[self alloc] init];
   item.title = title;
   item.caption = caption;
   item.text = text;
@@ -64,7 +62,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithTitle:(NSString*)title caption:(NSString*)caption text:(NSString*)text
           timestamp:(NSDate*)timestamp imageURL:(NSString*)imageURL URL:(NSString*)URL {
-  TTTableMessageItem* item = [[[self alloc] init] autorelease];
+  TTTableMessageItem* item = [[self alloc] init];
   item.title = title;
   item.caption = caption;
   item.text = text;

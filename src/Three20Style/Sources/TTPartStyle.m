@@ -34,7 +34,6 @@
   TT_RELEASE_SAFELY(_name);
   TT_RELEASE_SAFELY(_style);
 
-  [super dealloc];
 }
 
 
@@ -46,7 +45,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTPartStyle*)styleWithName:(NSString*)name style:(TTStyle*)stylez next:(TTStyle*)next {
-  TTPartStyle* style = [[[self alloc] initWithNext:next] autorelease];
+  TTPartStyle* style = [[self alloc] initWithNext:next];
   style.name = name;
   style.style = stylez;
   return style;

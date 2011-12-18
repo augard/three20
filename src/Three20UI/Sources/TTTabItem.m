@@ -16,8 +16,15 @@
 
 #import "Three20UI/TTTabItem.h"
 
+
 // Core
 #import "Three20Core/TTCorePreprocessorMacros.h"
+
+@interface TTTabBar : NSObject
+
+- (void) tabItem:(TTTabItem *)item badgeNumberChangedTo:(int)number;
+
+@end
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,8 +53,6 @@
   TT_RELEASE_SAFELY(_title);
   TT_RELEASE_SAFELY(_icon);
   TT_RELEASE_SAFELY(_object);
-
-  [super dealloc];
 }
 
 
@@ -68,9 +73,7 @@
 - (void)setBadgeNumber:(int)value {
   value = value < 0 ? 0 : value;
   _badgeNumber = value;
-  [_tabBar performSelector:@selector(tabItem:badgeNumberChangedTo:) withObject:self
-                withObject:(id)value];
+  [_tabBar tabItem:self badgeNumberChangedTo:value];
 }
-
 
 @end

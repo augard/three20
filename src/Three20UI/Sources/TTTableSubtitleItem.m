@@ -35,8 +35,6 @@
   TT_RELEASE_SAFELY(_subtitle);
   TT_RELEASE_SAFELY(_imageURL);
   TT_RELEASE_SAFELY(_defaultImage);
-
-  [super dealloc];
 }
 
 
@@ -48,7 +46,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text subtitle:(NSString*)subtitle {
-  TTTableSubtitleItem* item = [[[self alloc] init] autorelease];
+  TTTableSubtitleItem* item = [[self alloc] init];
   item.text = text;
   item.subtitle = subtitle;
   return item;
@@ -57,7 +55,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text subtitle:(NSString*)subtitle URL:(NSString*)URL {
-  TTTableSubtitleItem* item = [[[self alloc] init] autorelease];
+  TTTableSubtitleItem* item = [[self alloc] init];
   item.text = text;
   item.subtitle = subtitle;
   item.URL = URL;
@@ -68,7 +66,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text subtitle:(NSString*)subtitle
                URL:(NSString*)URL accessoryURL:(NSString*)accessoryURL {
-  TTTableSubtitleItem* item = [[[self alloc] init] autorelease];
+  TTTableSubtitleItem* item = [[self alloc] init];
   item.text = text;
   item.subtitle = subtitle;
   item.URL = URL;
@@ -80,7 +78,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text subtitle:(NSString*)subtitle imageURL:(NSString*)imageURL
                URL:(NSString*)URL {
-  TTTableSubtitleItem* item = [[[self alloc] init] autorelease];
+  TTTableSubtitleItem* item = [[self alloc] init];
   item.text = text;
   item.subtitle = subtitle;
   item.imageURL = imageURL;
@@ -92,7 +90,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)itemWithText:(NSString*)text subtitle:(NSString*)subtitle imageURL:(NSString*)imageURL
       defaultImage:(UIImage*)defaultImage URL:(NSString*)URL accessoryURL:(NSString*)accessoryURL {
-  TTTableSubtitleItem* item = [[[self alloc] init] autorelease];
+  TTTableSubtitleItem* item = [[self alloc] init];
   item.text = text;
   item.subtitle = subtitle;
   item.imageURL = imageURL;

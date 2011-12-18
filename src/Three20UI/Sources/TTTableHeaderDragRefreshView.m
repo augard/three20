@@ -145,8 +145,6 @@
   TT_RELEASE_SAFELY(_arrowImage);
   TT_RELEASE_SAFELY(_lastUpdatedLabel);
   TT_RELEASE_SAFELY(_lastUpdatedDate);
-
-  [super dealloc];
 }
 
 
@@ -159,11 +157,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setUpdateDate:(NSDate*)newDate {
   if (newDate) {
-    if (_lastUpdatedDate != newDate) {
-      [_lastUpdatedDate release];
-    }
-
-    _lastUpdatedDate = [newDate retain];
+    _lastUpdatedDate = newDate;
 
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterShortStyle];
@@ -172,8 +166,6 @@
                               TTLocalizedString(@"Last updated: %@",
                                                 @"The last time the table view was updated."),
                               [formatter stringFromDate:_lastUpdatedDate]];
-    [formatter release];
-
   } else {
     _lastUpdatedDate = nil;
     _lastUpdatedLabel.text = TTLocalizedString(@"Last updated: never",
