@@ -110,13 +110,14 @@ static TTStyleSheet* gStyleSheet = nil;
   if (!style) {
     SEL sel = NSSelectorFromString(selector);
     if ([self respondsToSelector:sel]) {
-        style = [self performSelector:NSSelectorFromString(selector) withObject:nil];
-        //NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:sel]];
-        //[invocation setTarget:self];
-        //[invocation setSelector:sel];
-        //[invocation setArgument:&state atIndex:1];
-        //[invocation invoke];
-        //[invocation getReturnValue:&style];
+        NSMethodSignature *signature = [self methodSignatureForSelector:sel];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+        [invocation setTarget:self];
+        [invocation setSelector:sel];
+        if ([signature numberOfArguments] > 2) 
+            [invocation setArgument:&state atIndex:2];
+        [invocation invoke];
+        [invocation getReturnValue:&style];
       if (style) {
         if (!_styles) {
           _styles = [[NSMutableDictionary alloc] init];
