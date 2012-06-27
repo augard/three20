@@ -105,7 +105,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initInView:(UIView *)view location:(CGPoint)location {
   if ((self = [super init])) {
-    _tapCount = 1;
+    /*_tapCount = 1;
     _locationInWindow = location;
     _previousLocationInWindow = location;
 
@@ -115,7 +115,7 @@
     _phase = UITouchPhaseBegan;
     _touchFlags._firstTouchForView = 1;
     _touchFlags._isTap = 1;
-    _timestamp = [NSDate timeIntervalSinceReferenceDate];
+    _timestamp = [NSDate timeIntervalSinceReferenceDate];*/
   }
   return self;
 }
@@ -123,8 +123,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)changeToPhase:(UITouchPhase)phase {
-  _phase = phase;
-  _timestamp = [NSDate timeIntervalSinceReferenceDate];
+    //_phase = phase;
+    //_timestamp = [NSDate timeIntervalSinceReferenceDate];
 }
 
 
