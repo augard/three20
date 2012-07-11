@@ -35,8 +35,7 @@ TT_FIX_CATEGORY_BUG(NSArrayAdditions)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)perform:(SEL)selector {
   NSArray *copy = [[NSArray alloc] initWithArray:self];
-  NSEnumerator* e = [copy objectEnumerator];
-  for (id delegate; (delegate = [e nextObject]); ) {
+  for (id delegate in copy) {
     if ([delegate respondsToSelector:selector]) {
       [delegate performSelector:selector];
     }
@@ -47,8 +46,7 @@ TT_FIX_CATEGORY_BUG(NSArrayAdditions)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)perform:(SEL)selector withObject:(id)p1 {
   NSArray *copy = [[NSArray alloc] initWithArray:self];
-  NSEnumerator* e = [copy objectEnumerator];
-  for (id delegate; (delegate = [e nextObject]); ) {
+  for (id delegate in copy) {
     if ([delegate respondsToSelector:selector]) {
       [delegate performSelector:selector withObject:p1];
     }
@@ -59,8 +57,7 @@ TT_FIX_CATEGORY_BUG(NSArrayAdditions)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)perform:(SEL)selector withObject:(id)p1 withObject:(id)p2 {
   NSArray *copy = [[NSArray alloc] initWithArray:self];
-  NSEnumerator* e = [copy objectEnumerator];
-  for (id delegate; (delegate = [e nextObject]); ) {
+  for (id delegate in copy) {
     if ([delegate respondsToSelector:selector]) {
       [delegate performSelector:selector withObject:p1 withObject:p2];
     }
@@ -71,8 +68,7 @@ TT_FIX_CATEGORY_BUG(NSArrayAdditions)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)perform:(SEL)selector withObject:(id)p1 withObject:(id)p2 withObject:(id)p3 {
   NSArray *copy = [[NSArray alloc] initWithArray:self];
-  NSEnumerator* e = [copy objectEnumerator];
-  for (id delegate; (delegate = [e nextObject]); ) {
+  for (id delegate in copy) {
     if ([delegate respondsToSelector:selector]) {
       [delegate performSelector:selector withObject:p1 withObject:p2 withObject:p3];
     }
