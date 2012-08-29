@@ -19,11 +19,11 @@
 
 @interface TTStyledNode : NSObject {
   TTStyledNode* _nextSibling;
-  TTStyledNode* __weak _parentNode;
+  TTStyledNode* __unsafe_unretained _parentNode;
 }
 
 @property (nonatomic, retain)   TTStyledNode* nextSibling;
-@property (nonatomic, weak)   TTStyledNode* parentNode;
+@property (nonatomic, unsafe_unretained)   TTStyledNode* parentNode;
 @property (nonatomic, readonly) NSString*     outerText;
 @property (nonatomic, readonly) NSString*     outerHTML;
 

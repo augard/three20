@@ -30,7 +30,7 @@
 
   BOOL      _didDrawContent;
 
-  id<TTStyleDelegate> __weak _delegate;
+  id<TTStyleDelegate> __unsafe_unretained _delegate;
 }
 
 @property (nonatomic)         CGRect    frame;
@@ -39,6 +39,6 @@
 @property (nonatomic, retain) UIFont*   font;
 @property (nonatomic)         BOOL      didDrawContent;
 
-@property (nonatomic, weak) id<TTStyleDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id<TTStyleDelegate> delegate;
 
 @end
