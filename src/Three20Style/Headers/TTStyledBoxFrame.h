@@ -19,12 +19,12 @@
 #import "Three20Style/TTStyleDelegate.h"
 
 @interface TTStyledBoxFrame : TTStyledFrame <TTStyleDelegate> {
-  TTStyledBoxFrame* __unsafe_unretained _parentFrame;
+  TTStyledBoxFrame* __weak _parentFrame;
   TTStyledFrame*    _firstChildFrame;
   TTStyle*          _style;
 }
 
-@property (nonatomic, unsafe_unretained) TTStyledBoxFrame* parentFrame;
+@property (nonatomic, weak) TTStyledBoxFrame* parentFrame;
 @property (nonatomic, retain) TTStyledFrame*    firstChildFrame;
 
 /**

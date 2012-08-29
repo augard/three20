@@ -24,14 +24,14 @@
   UIFont*               _font;
   BOOL                  _isVertical;
 
-  id<TTImageViewDelegate> __unsafe_unretained _imageDelegate;
+  id<TTImageViewDelegate> __weak _imageDelegate;
 }
 
 @property (nonatomic, retain) UIFont* font;
 @property (nonatomic)         BOOL    isVertical;
 
 // This must be set before you call setImage:
-@property (nonatomic, unsafe_unretained) id<TTImageViewDelegate> imageDelegate;
+@property (nonatomic, weak) id<TTImageViewDelegate> imageDelegate;
 
 + (TTButton*)buttonWithStyle:(NSString*)selector;
 + (TTButton*)buttonWithStyle:(NSString*)selector title:(NSString*)title;

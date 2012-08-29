@@ -106,7 +106,7 @@ static TTStyleSheet* gStyleSheet = nil;
   NSString* key = state == UIControlStateNormal
     ? selector
     : [NSString stringWithFormat:@"%@%d", selector, state];
-  TTStyle __unsafe_unretained *style = [_styles objectForKey:key];
+  TTStyle __weak *style = [_styles objectForKey:key];
   if (!style) {
     SEL sel = NSSelectorFromString(selector);
     if ([self respondsToSelector:sel]) {

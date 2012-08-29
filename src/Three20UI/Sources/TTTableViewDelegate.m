@@ -128,7 +128,10 @@
       TTOpenURLFromView(item.URL, tableView);
 
     } else if (item.delegate && item.selector) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
       [item.delegate performSelector:item.selector withObject:object];
+#pragma clang diagnostic pop
     }
 
     if ([object isKindOfClass:[TTTableButton class]]) {

@@ -369,7 +369,10 @@ TT_FIX_CATEGORY_BUG(UIViewControllerAdditions)
         // the given selector. Check the controller type and the selector itself.
         TTDASSERT([controller respondsToSelector:selector]);
         if ([controller respondsToSelector:selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
           [controller performSelector:selector];
+#pragma clang diagnostic pop
         }
 
         // The object's retain count is now 1, so when we release the copied set below,

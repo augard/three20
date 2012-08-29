@@ -23,13 +23,13 @@
   NSString* _URL;
   NSString* _accessoryURL;
 
-  id        __unsafe_unretained _delegate;
+  id        __weak _delegate;
   SEL       _selector;
 }
 
 @property (nonatomic, copy) 	NSString* URL;
 @property (nonatomic, copy)   NSString* accessoryURL;
-@property (nonatomic, unsafe_unretained) id        delegate;
+@property (nonatomic, weak) id        delegate;
 @property (nonatomic, assign) SEL       selector;
 
 @end

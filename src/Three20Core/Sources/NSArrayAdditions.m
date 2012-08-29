@@ -37,7 +37,10 @@ TT_FIX_CATEGORY_BUG(NSArrayAdditions)
   NSArray *copy = [[NSArray alloc] initWithArray:self];
   for (id delegate in copy) {
     if ([delegate respondsToSelector:selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
       [delegate performSelector:selector];
+#pragma clang diagnostic pop
     }
   }
 }
@@ -48,7 +51,10 @@ TT_FIX_CATEGORY_BUG(NSArrayAdditions)
   NSArray *copy = [[NSArray alloc] initWithArray:self];
   for (id delegate in copy) {
     if ([delegate respondsToSelector:selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
       [delegate performSelector:selector withObject:p1];
+#pragma clang diagnostic pop
     }
   }
 }
@@ -59,7 +65,10 @@ TT_FIX_CATEGORY_BUG(NSArrayAdditions)
   NSArray *copy = [[NSArray alloc] initWithArray:self];
   for (id delegate in copy) {
     if ([delegate respondsToSelector:selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
       [delegate performSelector:selector withObject:p1 withObject:p2];
+#pragma clang diagnostic pop
     }
   }
 }
@@ -79,7 +88,10 @@ TT_FIX_CATEGORY_BUG(NSArrayAdditions)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)makeObjectsPerformSelector:(SEL)selector withObject:(id)p1 withObject:(id)p2 {
   for (id delegate in self) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     [delegate performSelector:selector withObject:p1 withObject:p2];
+#pragma clang diagnostic pop
   }
 }
 
@@ -121,9 +133,12 @@ TT_FIX_CATEGORY_BUG(NSArrayAdditions)
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)containsObject:(id)object withSelector:(SEL)selector {
   for (id item in self) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     if ([[item performSelector:selector withObject:object] boolValue]) {
       return YES;
     }
+#pragma clang diagnostic pop
   }
   return NO;
 }
