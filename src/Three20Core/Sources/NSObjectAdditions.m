@@ -32,167 +32,167 @@ TT_FIX_CATEGORY_BUG(NSObjectAdditions)
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)performSelector:(SEL)selector 
-           withObject:(__weak NSObject *)p1 
-           withObject:(__weak NSObject *)p2 
-           withObject:(__weak NSObject *)p3 {
-  NSMethodSignature *sig = [self methodSignatureForSelector:selector];
-  if (sig) {
-    NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
-    [invo setTarget:self];
-    [invo setSelector:selector];
-    [invo setArgument:&p1 atIndex:2];
-    [invo setArgument:&p2 atIndex:3];
-    [invo setArgument:&p3 atIndex:4];
-    [invo invoke];
-    if (sig.methodReturnLength) {
-      __weak NSObject* anObject;
-      [invo getReturnValue:&anObject];
-      return anObject;
-
+- (id)performSelector:(SEL)selector
+           withObject:(__unsafe_unretained NSObject *)p1
+           withObject:(__unsafe_unretained NSObject *)p2
+           withObject:(__unsafe_unretained NSObject *)p3 {
+    NSMethodSignature *sig = [self methodSignatureForSelector:selector];
+    if (sig) {
+        NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
+        [invo setTarget:self];
+        [invo setSelector:selector];
+        [invo setArgument:&p1 atIndex:2];
+        [invo setArgument:&p2 atIndex:3];
+        [invo setArgument:&p3 atIndex:4];
+        [invo invoke];
+        if (sig.methodReturnLength) {
+            __unsafe_unretained NSObject* anObject;
+            [invo getReturnValue:&anObject];
+            return anObject;
+            
+        } else {
+            return nil;
+        }
+        
     } else {
-      return nil;
+        return nil;
     }
-
-  } else {
-    return nil;
-  }
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)performSelector:(SEL)selector 
-           withObject:(__weak NSObject *)p1
-           withObject:(__weak NSObject *)p2
-           withObject:(__weak NSObject *)p3
-           withObject:(__weak NSObject *)p4 {
-  NSMethodSignature *sig = [self methodSignatureForSelector:selector];
-  if (sig) {
-    NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
-    [invo setTarget:self];
-    [invo setSelector:selector];
-    [invo setArgument:&p1 atIndex:2];
-    [invo setArgument:&p2 atIndex:3];
-    [invo setArgument:&p3 atIndex:4];
-    [invo setArgument:&p4 atIndex:5];
-    [invo invoke];
-    if (sig.methodReturnLength) {
-      __weak NSObject* anObject;
-      [invo getReturnValue:&anObject];
-      return anObject;
-
-    } else {
-      return nil;
-    }
-
-  } else {
-    return nil;
-  }
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)performSelector:(SEL)selector
-           withObject:(__weak NSObject *)p1
-           withObject:(__weak NSObject *)p2
-           withObject:(__weak NSObject *)p3
-           withObject:(__weak NSObject *)p4
-           withObject:(__weak NSObject *)p5 {
-  NSMethodSignature *sig = [self methodSignatureForSelector:selector];
-  if (sig) {
-    NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
-    [invo setTarget:self];
-    [invo setSelector:selector];
-    [invo setArgument:&p1 atIndex:2];
-    [invo setArgument:&p2 atIndex:3];
-    [invo setArgument:&p3 atIndex:4];
-    [invo setArgument:&p4 atIndex:5];
-    [invo setArgument:&p5 atIndex:6];
-    [invo invoke];
-    if (sig.methodReturnLength) {
-      __weak NSObject* anObject;
-      [invo getReturnValue:&anObject];
-      return anObject;
-
+           withObject:(__unsafe_unretained NSObject *)p1
+           withObject:(__unsafe_unretained NSObject *)p2
+           withObject:(__unsafe_unretained NSObject *)p3
+           withObject:(__unsafe_unretained NSObject *)p4 {
+    NSMethodSignature *sig = [self methodSignatureForSelector:selector];
+    if (sig) {
+        NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
+        [invo setTarget:self];
+        [invo setSelector:selector];
+        [invo setArgument:&p1 atIndex:2];
+        [invo setArgument:&p2 atIndex:3];
+        [invo setArgument:&p3 atIndex:4];
+        [invo setArgument:&p4 atIndex:5];
+        [invo invoke];
+        if (sig.methodReturnLength) {
+            __unsafe_unretained NSObject* anObject;
+            [invo getReturnValue:&anObject];
+            return anObject;
+            
+        } else {
+            return nil;
+        }
+        
     } else {
-      return nil;
+        return nil;
     }
-
-  } else {
-    return nil;
-  }
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)performSelector:(SEL)selector
-           withObject:(__weak NSObject *)p1
-           withObject:(__weak NSObject *)p2
-           withObject:(__weak NSObject *)p3
-           withObject:(__weak NSObject *)p4
-           withObject:(__weak NSObject *)p5
-           withObject:(__weak NSObject *)p6 {
-  NSMethodSignature *sig = [self methodSignatureForSelector:selector];
-  if (sig) {
-    NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
-    [invo setTarget:self];
-    [invo setSelector:selector];
-    [invo setArgument:&p1 atIndex:2];
-    [invo setArgument:&p2 atIndex:3];
-    [invo setArgument:&p3 atIndex:4];
-    [invo setArgument:&p4 atIndex:5];
-    [invo setArgument:&p5 atIndex:6];
-    [invo setArgument:&p6 atIndex:7];
-    [invo invoke];
-    if (sig.methodReturnLength) {
-      __weak NSObject* anObject;
-      [invo getReturnValue:&anObject];
-      return anObject;
-
+           withObject:(__unsafe_unretained NSObject *)p1
+           withObject:(__unsafe_unretained NSObject *)p2
+           withObject:(__unsafe_unretained NSObject *)p3
+           withObject:(__unsafe_unretained NSObject *)p4
+           withObject:(__unsafe_unretained NSObject *)p5 {
+    NSMethodSignature *sig = [self methodSignatureForSelector:selector];
+    if (sig) {
+        NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
+        [invo setTarget:self];
+        [invo setSelector:selector];
+        [invo setArgument:&p1 atIndex:2];
+        [invo setArgument:&p2 atIndex:3];
+        [invo setArgument:&p3 atIndex:4];
+        [invo setArgument:&p4 atIndex:5];
+        [invo setArgument:&p5 atIndex:6];
+        [invo invoke];
+        if (sig.methodReturnLength) {
+            __unsafe_unretained NSObject* anObject;
+            [invo getReturnValue:&anObject];
+            return anObject;
+            
+        } else {
+            return nil;
+        }
+        
     } else {
-      return nil;
+        return nil;
     }
-
-  } else {
-    return nil;
-  }
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)performSelector:(SEL)selector
-           withObject:(__weak NSObject *)p1
-           withObject:(__weak NSObject *)p2
-           withObject:(__weak NSObject *)p3
-           withObject:(__weak NSObject *)p4
-           withObject:(__weak NSObject *)p5
-           withObject:(__weak NSObject *)p6
-           withObject:(__weak NSObject *)p7 {
-  NSMethodSignature *sig = [self methodSignatureForSelector:selector];
-  if (sig) {
-    NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
-    [invo setTarget:self];
-    [invo setSelector:selector];
-    [invo setArgument:&p1 atIndex:2];
-    [invo setArgument:&p2 atIndex:3];
-    [invo setArgument:&p3 atIndex:4];
-    [invo setArgument:&p4 atIndex:5];
-    [invo setArgument:&p5 atIndex:6];
-    [invo setArgument:&p6 atIndex:7];
-    [invo setArgument:&p7 atIndex:8];
-    [invo invoke];
-    if (sig.methodReturnLength) {
-      __weak NSObject* anObject;
-      [invo getReturnValue:&anObject];
-      return anObject;
-
+           withObject:(__unsafe_unretained NSObject *)p1
+           withObject:(__unsafe_unretained NSObject *)p2
+           withObject:(__unsafe_unretained NSObject *)p3
+           withObject:(__unsafe_unretained NSObject *)p4
+           withObject:(__unsafe_unretained NSObject *)p5
+           withObject:(__unsafe_unretained NSObject *)p6 {
+    NSMethodSignature *sig = [self methodSignatureForSelector:selector];
+    if (sig) {
+        NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
+        [invo setTarget:self];
+        [invo setSelector:selector];
+        [invo setArgument:&p1 atIndex:2];
+        [invo setArgument:&p2 atIndex:3];
+        [invo setArgument:&p3 atIndex:4];
+        [invo setArgument:&p4 atIndex:5];
+        [invo setArgument:&p5 atIndex:6];
+        [invo setArgument:&p6 atIndex:7];
+        [invo invoke];
+        if (sig.methodReturnLength) {
+            __unsafe_unretained NSObject* anObject;
+            [invo getReturnValue:&anObject];
+            return anObject;
+            
+        } else {
+            return nil;
+        }
+        
     } else {
-      return nil;
+        return nil;
     }
+}
 
-  } else {
-    return nil;
-  }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id)performSelector:(SEL)selector
+           withObject:(__unsafe_unretained NSObject *)p1
+           withObject:(__unsafe_unretained NSObject *)p2
+           withObject:(__unsafe_unretained NSObject *)p3
+           withObject:(__unsafe_unretained NSObject *)p4
+           withObject:(__unsafe_unretained NSObject *)p5
+           withObject:(__unsafe_unretained NSObject *)p6
+           withObject:(__unsafe_unretained NSObject *)p7 {
+    NSMethodSignature *sig = [self methodSignatureForSelector:selector];
+    if (sig) {
+        NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
+        [invo setTarget:self];
+        [invo setSelector:selector];
+        [invo setArgument:&p1 atIndex:2];
+        [invo setArgument:&p2 atIndex:3];
+        [invo setArgument:&p3 atIndex:4];
+        [invo setArgument:&p4 atIndex:5];
+        [invo setArgument:&p5 atIndex:6];
+        [invo setArgument:&p6 atIndex:7];
+        [invo setArgument:&p7 atIndex:8];
+        [invo invoke];
+        if (sig.methodReturnLength) {
+            __unsafe_unretained NSObject* anObject;
+            [invo getReturnValue:&anObject];
+            return anObject;
+            
+        } else {
+            return nil;
+        }
+        
+    } else {
+        return nil;
+    }
 }
 
 
