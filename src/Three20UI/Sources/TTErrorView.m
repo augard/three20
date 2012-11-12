@@ -48,21 +48,46 @@ static const CGFloat kHPadding  = 10;
   return self;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        [self _createView];
+    }
+    return self;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self _createView];
+    }
+    return self;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame {
-  if ((self = [super initWithFrame:frame])) {
+    if ((self = [super initWithFrame:frame])) {
+        [self _createView];
+    }
+    
+    return self;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)_createView {
     _imageView = [[UIImageView alloc] init];
     _imageView.contentMode = UIViewContentModeCenter;
     [self addSubview:_imageView];
-
+    
     _titleView = [[UILabel alloc] init];
     _titleView.backgroundColor = [UIColor clearColor];
     _titleView.textColor = TTSTYLEVAR(tableErrorTextColor);
     _titleView.font = TTSTYLEVAR(errorTitleFont);
     _titleView.textAlignment = UITextAlignmentCenter;
     [self addSubview:_titleView];
-
+    
     _subtitleView = [[UILabel alloc] init];
     _subtitleView.backgroundColor = [UIColor clearColor];
     _subtitleView.textColor = TTSTYLEVAR(tableErrorTextColor);
@@ -70,11 +95,7 @@ static const CGFloat kHPadding  = 10;
     _subtitleView.textAlignment = UITextAlignmentCenter;
     _subtitleView.numberOfLines = 0;
     [self addSubview:_subtitleView];
-  }
-
-  return self;
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {
