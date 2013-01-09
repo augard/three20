@@ -86,6 +86,7 @@ static const CGFloat kHPadding  = 10;
     _titleView.textColor = TTSTYLEVAR(tableErrorTextColor);
     _titleView.font = TTSTYLEVAR(errorTitleFont);
     _titleView.textAlignment = UITextAlignmentCenter;
+    _titleView.numberOfLines = 0;
     [self addSubview:_titleView];
     
     _subtitleView = [[UILabel alloc] init];
@@ -114,6 +115,7 @@ static const CGFloat kHPadding  = 10;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)layoutSubviews {
+  _titleView.size = [_titleView sizeThatFits:CGSizeMake(self.width - kHPadding*2, 0)];
   _subtitleView.size = [_subtitleView sizeThatFits:CGSizeMake(self.width - kHPadding*2, 0)];
   [_titleView sizeToFit];
   [_imageView sizeToFit];
