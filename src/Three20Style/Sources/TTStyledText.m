@@ -298,7 +298,7 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)setTextAlignment:(UITextAlignment)textAlignment {
+- (void)setTextAlignment:(NSTextAlignment)textAlignment {
   if (textAlignment != _textAlignment) {
     _textAlignment = textAlignment;
     [self setNeedsLayout];

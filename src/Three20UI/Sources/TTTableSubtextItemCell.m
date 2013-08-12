@@ -45,7 +45,7 @@
     self.textLabel.textColor = TTSTYLEVAR(tableSubTextColor);
     self.textLabel.highlightedTextColor = TTSTYLEVAR(highlightedTextColor);
 	self.textLabel.backgroundColor = TTSTYLEVAR(backgroundTextColor);
-    self.textLabel.textAlignment = UITextAlignmentLeft;
+    self.textLabel.textAlignment = NSTextAlignmentLeft;
     self.textLabel.contentMode = UIViewContentModeTop;
     self.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     self.textLabel.numberOfLines = 0;
